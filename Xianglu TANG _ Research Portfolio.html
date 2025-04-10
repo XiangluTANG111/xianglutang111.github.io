@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xianglu TANG | Research Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { 
+      font-family: 'Montserrat', sans-serif; 
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+    }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+    .card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3); }
+    .project-card-prediction { border-left: 4px solid #06b6d4; }
+    .project-card-ai { border-left: 4px solid #8b5cf6; }
+    .project-card-charity { border-left: 4px solid #f59e0b; }
+    .project-card-cognition { border-left: 4px solid #10b981; }
+    .project-tag { position: absolute; top: 10px; right: 10px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; padding: 4px 8px; border-radius: 4px; }
+    .mobile-nav { transition: all 0.3s ease-in-out; transform: translateY(-100%); }
+    .mobile-nav.active { transform: translateY(0); }
+    .back-to-top { position: fixed; bottom: 20px; right: 20px; z-index: 30; transition: all 0.3s ease; opacity: 0; visibility: hidden; }
+    .back-to-top.visible { opacity: 1; visibility: visible; }
+    .glassmorphism { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #1a1a1a; }
+    ::-webkit-scrollbar-thumb { background: #0d9488; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0f766e; }
+    .hover-underline { position: relative; }
+    .hover-underline::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #2dd4bf; transition: width 0.3s ease; }
+    .hover-underline:hover::after { width: 100%; }
+    .btn-pulse { animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(45, 212, 191, 0); } 100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0); } }
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 w-full bg-black bg-opacity-70 backdrop-blur-md z-50 flex justify-between items-center px-4 md:px-6 py-3">
+    <div class="text-lg font-semibold text-white">Xianglu TANG</div>
+    <div class="hidden md:flex space-x-6">
+      <a href="#research" class="text-white hover:text-teal-400 transition-colors hover-underline">My Research</a>
+      <a href="#blog" class="text-white hover:text-teal-400 transition-colors hover-underline">Blog</a>
+      <a href="#hobby" class="text-white hover:text-teal-400 transition-colors hover-underline">Hobby</a>
+      <a href="#contact" class="text-white hover:text-teal-400 transition-colors hover-underline">Contact</a>
+      <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="text-white hover:text-teal-400 transition-colors">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://twitter.com/" target="_blank" class="text-white hover:text-teal-400 transition-colors">
+        <i class="fa-brands fa-x-twitter"></i>
+      </a>
+    </div>
+    <button id="mobileMenuBtn" class="md:hidden text-white focus:outline-none">
+      <i class="fas fa-bars text-2xl"></i>
+    </button>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div id="mobileNav" class="mobile-nav fixed top-12 left-0 w-full bg-black bg-opacity-90 backdrop-blur-md z-40 md:hidden">
+    <div class="flex flex-col p-4">
+      <a href="#top" class="py-3 px-4 text-white hover:bg-teal-900 flex items-center rounded-md mb-1">
+        <i class="fas fa-home mr-2"></i> Home
+      </a>
+      <a href="#research" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">My Research</a>
+      <a href="#blog" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">Blog</a>
+      <a href="#hobby" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">Hobby</a>
+      <a href="#contact" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">Contact</a>
+      <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">
+        <i class="fab fa-linkedin mr-2"></i> LinkedIn
+      </a>
+      <a href="https://twitter.com/" target="_blank" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">
+        <i class="fa-brands fa-x-twitter mr-2"></i> X (Twitter)
+      </a>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <a href="#top" id="backToTop" class="back-to-top bg-teal-600 hover:bg-teal-700 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- Hero Section -->
+  <section id="top" class="relative w-full h-screen flex items-center justify-center text-white" style="background: url('nature.jpg') center/cover no-repeat;">
+    <div class="absolute inset-0 bg-gradient-to-b from-black bg-opacity-50 to-transparent"></div>
+    <div class="z-10 text-center px-4 max-w-4xl mx-auto">
+      <div class="glassmorphism p-8 rounded-xl bg-black bg-opacity-30">
+        <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6">Uploading myself to the world.</h1>
+        <p class="mt-2 text-xl md:text-2xl text-white mb-8">Xianglu TANG</p>
+        <a href="#research" class="mt-4 inline-block bg-white hover:bg-gray-200 text-teal-900 font-bold py-3 px-8 rounded-full transition-colors duration-300 shadow-lg transform hover:scale-105 btn-pulse">Discover My Work</a>
+      </div>
+      <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-2xl text-white">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Section -->
+  <section id="research" class="relative py-20 w-full bg-gradient-to-b from-gray-900 to-teal-900">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex flex-col items-center mb-16">
+        <div class="relative mb-6">
+          <img src="xianglu.jpg" alt="Xianglu TANG" class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover shadow-lg border-4 border-white" />
+          <div class="absolute -bottom-2 -right-2 bg-teal-500 rounded-full p-2 text-white shadow-md">
+            <i class="fas fa-water text-lg"></i>
+          </div>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-semibold mt-4 text-white">Hi, I'm Xianglu 🌊</h2>
+        <p class="text-base md:text-lg text-gray-100 leading-relaxed mt-4 text-center max-w-2xl px-4">
+          I'm passionate about <span class="text-teal-300">psychological research</span>, <span class="text-teal-300">technical blogging</span>,
+          and building a <span class="text-teal-300">sustainable, healthy lifestyle</span>. With a strong background in
+          <span class="text-teal-300">education and research projects</span>, I aim to make a meaningful impact through
+          thoughtful innovation and mindful living.
+        </p>
+      </div>
+
+      <div class="mb-10 flex flex-wrap justify-center gap-3">
+        <span class="inline-flex items-center px-3 py-1 bg-cyan-900 bg-opacity-50 rounded-full">
+          <div class="w-3 h-3 rounded-full bg-cyan-500 mr-2"></div>
+          <span class="text-xs font-medium">Prediction Models</span>
+        </span>
+        <span class="inline-flex items-center px-3 py-1 bg-purple-900 bg-opacity-50 rounded-full">
+          <div class="w-3 h-3 rounded-full bg-purple-500 mr-2"></div>
+          <span class="text-xs font-medium">AI & Human Behavior</span>
+        </span>
+        <span class="inline-flex items-center px-3 py-1 bg-amber-900 bg-opacity-50 rounded-full">
+          <div class="w-3 h-3 rounded-full bg-amber-500 mr-2"></div>
+          <span class="text-xs font-medium">Charity & Social Impact</span>
+        </span>
+        <span class="inline-flex items-center px-3 py-1 bg-emerald-900 bg-opacity-50 rounded-full">
+          <div class="w-3 h-3 rounded-full bg-emerald-500 mr-2"></div>
+          <span class="text-xs font-medium">Cognition & Mindfulness</span>
+        </span>
+      </div>
+
+      <h3 class="text-2xl md:text-3xl font-semibold text-white mb-8 text-center">Research Projects</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 px-4">
+        <div class="glassmorphism rounded-xl p-6 card project-card-prediction relative bg-black bg-opacity-20">
+          <span class="project-tag bg-cyan-900 text-cyan-100">Prediction Model</span>
+          <div class="mb-4 text-cyan-400 text-3xl">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-cyan-300 mb-2">Stanford: Prediction Model Meta-Analysis</h4>
+          <p class="text-gray-100 mb-4">Currently conducting meta-analysis research on prediction models in cognitive psychology, examining efficacy and practical applications across various experimental contexts.</p>
+          <div class="flex items-center text-sm text-gray-300 flex-wrap">
+            <span class="mr-4 mb-2"><i class="far fa-calendar-alt mr-1"></i> 2024-Present</span>
+            <span><i class="fas fa-university mr-1"></i> Stanford University</span>
+          </div>
+        </div>
+        
+        <div class="glassmorphism rounded-xl p-6 card project-card-ai relative bg-black bg-opacity-20">
+          <span class="project-tag bg-purple-900 text-purple-100">AI Application</span>
+          <div class="mb-4 text-purple-400 text-3xl">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-purple-300 mb-2">Columbia: AI & Negotiation Coaching</h4>
+          <p class="text-gray-100 mb-4">Co-designing an LLM-based Assistant for Coaching nEgotiation (ACE) with a focus on empowering minorities and women through specialized feedback, addressing workplace inequality.</p>
+          <div class="flex items-center text-sm text-gray-300 flex-wrap">
+            <span class="mr-4 mb-2"><i class="far fa-calendar-alt mr-1"></i> 2024-Present</span>
+            <span><i class="fas fa-users mr-1"></i> Columbia Business School</span>
+          </div>
+        </div>
+        
+        <div class="glassmorphism rounded-xl p-6 card project-card-ai relative bg-black bg-opacity-20">
+          <span class="project-tag bg-purple-900 text-purple-100">Social Psychology</span>
+          <div class="mb-4 text-purple-400 text-3xl">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-purple-300 mb-2">Columbia: Power Dynamics & Ethics</h4>
+          <p class="text-gray-100 mb-4">Researching how leaders approaching the end of their tenure may engage in compensatory unethical behavior, with data analysis revealing the "age 59 effect" in corruption patterns.</p>
+          <div class="flex items-center text-sm text-gray-300 flex-wrap">
+            <span class="mr-4 mb-2"><i class="far fa-calendar-alt mr-1"></i> 2024-Present</span>
+            <span><i class="fas fa-university mr-1"></i> Columbia University</span>
+          </div>
+        </div>
+        
+        <div class="glassmorphism rounded-xl p-6 card project-card-charity relative bg-black bg-opacity-20">
+          <span class="project-tag bg-amber-900 text-amber-100">Charity Research</span>
+          <div class="mb-4 text-amber-400 text-3xl">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-amber-300 mb-2">Adream NGO: Charity Narratives</h4>
+          <p class="text-gray-100 mb-4">Senior thesis project (ranked #1 in class) exploring how emotional narratives affect donations and perceptions of charity competence, with significant findings on trust impact.</p>
+          <div class="flex items-center text-sm text-gray-300 flex-wrap">
+            <span class="mr-4 mb-2"><i class="far fa-calendar-alt mr-1"></i> 2024</span>
+            <span><i class="fas fa-star mr-1"></i> First-Ranked Thesis</span>
+          </div>
+        </div>
+        
+        <div class="glassmorphism rounded-xl p-6 card project-card-charity relative bg-black bg-opacity-20">
+          <span class="project-tag bg-amber-900 text-amber-100">Education Impact</span>
+          <div class="mb-4 text-amber-400 text-3xl">
+            <i class="fas fa-chalkboard-teacher"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-amber-300 mb-2">Adream NGO: Teacher Empowerment</h4>
+          <p class="text-gray-100 mb-4">Analyzing teacher guides to identify empowerment gaps and designing interventions that blend belonging narratives with improved lesson plans to boost teacher engagement and course completion.</p>
+          <div class="flex items-center text-sm text-gray-300 flex-wrap">
+            <span class="mr-4 mb-2"><i class="far fa-calendar-alt mr-1"></i> 2024</span>
+            <span><i class="fas fa-chart-line mr-1"></i> Ongoing Research</span>
+          </div>
+        </div>
+        
+        <div class="glassmorphism rounded-xl p-6 card project-card-cognition relative bg-black bg-opacity-20">
+          <span class="project-tag bg-emerald-900 text-emerald-100">Cognitive Study</span>
+          <div class="mb-4 text-emerald-400 text-3xl">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h4 class="text-xl font-semibold text-emerald-300 mb-2">Independent: Mindfulness & Cognitive Fatigue</h4>
+          <p class="text-gray-100 mb-4">Investigating how dispositional mindfulness enhances cognitive resilience by offsetting the impact of fatigue on learning capacity, with significant findings on performance under cognitive load.</p>
+          <div class="flex items-center text-sm text-gray-300 flex-wrap">
+            <span class="mr-4 mb-2"><i class="far fa-calendar-alt mr-1"></i> 2023-2024</span>
+            <span><i class="fas fa-file-alt mr-1"></i> Published Research</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-10 text-center">
+        <a href="#" class="inline-block bg-white text-teal-900 hover:bg-gray-200 font-medium py-3 px-8 rounded-full transition-colors duration-300 shadow-lg transform hover:scale-105">View All Research</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="relative py-20 w-full bg-gradient-to-b from-teal-900 to-blue-900">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-semibold text-center text-white mb-12">Recent Blog Posts</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 px-4">
+        <div class="glassmorphism rounded-xl overflow-hidden card bg-black bg-opacity-20">
+          <div class="h-48 bg-teal-800 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center text-white">
+              <i class="fas fa-robot text-6xl opacity-50"></i>
+            </div>
+            <div class="absolute top-0 left-0 bg-teal-600 text-white px-4 py-1 rounded-br-lg shadow-md">
+              <span class="text-sm font-semibold">AI Tools</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg md:text-xl font-bold mt-2 mb-3 text-white">Rapid Literature Review: Using AI APIs to Filter Research Papers</h3>
+            <p class="text-gray-300 mb-4">Learn how to streamline your literature review process by integrating AI tools via APIs to quickly identify and organize relevant research papers.</p>
+            <div class="flex justify-between items-center flex-wrap">
+              <span class="text-sm text-gray-400 mb-2 md:mb-0"><i class="far fa-calendar-alt mr-1"></i> April 5, 2025</span>
+              <a href="#" class="text-teal-300 hover:text-teal-400 font-medium flex items-center">Read More <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="glassmorphism rounded-xl overflow-hidden card bg-black bg-opacity-20">
+          <div class="h-48 bg-purple-800 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center text-white">
+              <i class="fas fa-code text-6xl opacity-50"></i>
+            </div>
+            <div class="absolute top-0 left-0 bg-purple-600 text-white px-4 py-1 rounded-br-lg shadow-md">
+              <span class="text-sm font-semibold">Web Development</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg md:text-xl font-bold mt-2 mb-3 text-white">Building Professional Websites with AI: A Researcher's Guide</h3>
+            <p class="text-gray-300 mb-4">A comprehensive tutorial on leveraging AI tools to create responsive, professional websites for academics and researchers without coding experience.</p>
+            <div class="flex justify-between items-center flex-wrap">
+              <span class="text-sm text-gray-400 mb-2 md:mb-0"><i class="far fa-calendar-alt mr-1"></i> March 21, 2025</span>
+              <a href="#" class="text-teal-300 hover:text-teal-400 font-medium flex items-center">Read More <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="glassmorphism rounded-xl overflow-hidden card bg-black bg-opacity-20">
+          <div class="h-48 bg-blue-800 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center text-white">
+              <i class="fas fa-flask text-6xl opacity-50"></i>
+            </div>
+            <div class="absolute top-0 left-0 bg-blue-600 text-white px-4 py-1 rounded-br-lg shadow-md">
+              <span class="text-sm font-semibold">Research</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg md:text-xl font-bold mt-2 mb-3 text-white">AI in Scientific Research: Obtaining High-Quality Information Without Hallucinations</h3>
+            <p class="text-gray-300 mb-4">Strategic approaches to using AI tools for research while avoiding common pitfalls like hallucinations and inaccuracies in AI-generated content.</p>
+            <div class="flex justify-between items-center flex-wrap">
+              <span class="text-sm text-gray-400 mb-2 md:mb-0"><i class="far fa-calendar-alt mr-1"></i> February 14, 2025</span>
+              <a href="#" class="text-teal-300 hover:text-teal-400 font-medium flex items-center">Read More <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="glassmorphism rounded-xl overflow-hidden card bg-black bg-opacity-20">
+          <div class="h-48 bg-green-800 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center text-white">
+              <i class="fas fa-award text-6xl opacity-50"></i>
+            </div>
+            <div class="absolute top-0 left-0 bg-green-600 text-white px-4 py-1 rounded-br-lg shadow-md">
+              <span class="text-sm font-semibold">AI Review</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg md:text-xl font-bold mt-2 mb-3 text-white">AI Tool Review: Selecting the Best AI Assistants for Academic Research</h3>
+            <p class="text-gray-300 mb-4">Comprehensive evaluation of current AI tools for academic research, comparing capabilities, accuracy, and integration options across major platforms.</p>
+            <div class="flex justify-between items-center flex-wrap">
+              <span class="text-sm text-gray-400 mb-2 md:mb-0"><i class="far fa-calendar-alt mr-1"></i> January 30, 2025</span>
+              <a href="#" class="text-teal-300 hover:text-teal-400 font-medium flex items-center">Read More <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="glassmorphism rounded-xl overflow-hidden card bg-black bg-opacity-20">
+          <div class="h-48 bg-yellow-800 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center text-white">
+              <i class="fas fa-lightbulb text-6xl opacity-50"></i>
+            </div>
+            <div class="absolute top-0 left-0 bg-yellow-600 text-white px-4 py-1 rounded-br-lg shadow-md">
+              <span class="text-sm font-semibold">Life Lessons</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg md:text-xl font-bold mt-2 mb-3 text-white">20 at 20: The Most Important Lessons I've Learned</h3>
+            <p class="text-gray-300 mb-4">Personal reflections on the twenty most valuable insights and principles I've discovered by age twenty, from research practices to life philosophy.</p>
+            <div class="flex justify-between items-center flex-wrap">
+              <span class="text-sm text-gray-400 mb-2 md:mb-0"><i class="far fa-calendar-alt mr-1"></i> December 12, 2024</span>
+              <a href="#" class="text-teal-300 hover:text-teal-400 font-medium flex items-center">Read More <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="glassmorphism rounded-xl overflow-hidden card bg-black bg-opacity-20">
+          <div class="h-48 bg-red-800 relative overflow-hidden">
+            <div class="absolute inset-0 flex items-center justify-center text-white">
+              <i class="fas fa-heartbeat text-6xl opacity-50"></i>
+            </div>
+            <div class="absolute top-0 left-0 bg-red-600 text-white px-4 py-1 rounded-br-lg shadow-md">
+              <span class="text-sm font-semibold">Traditional Medicine</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg md:text-xl font-bold mt-2 mb-3 text-white">Practical Guide to Traditional Chinese Medicine in Daily Life</h3>
+            <p class="text-gray-300 mb-4">An evidence-based exploration of how traditional Chinese medicine practices can be integrated into modern daily routines for improved wellbeing.</p>
+            <div class="flex justify-between items-center flex-wrap">
+              <span class="text-sm text-gray-400 mb-2 md:mb-0"><i class="far fa-calendar-alt mr-1"></i> November 5, 2024</span>
+              <a href="#" class="text-teal-300 hover:text-teal-400 font-medium flex items-center">Read More <i class="fas fa-arrow-right ml-1 text-xs"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-10 text-center">
+        <a href="#" class="inline-block bg-white text-teal-900 hover:bg-gray-200 font-medium py-3 px-8 rounded-full transition-colors duration-300 shadow-lg transform hover:scale-105">View All Posts</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Hobby Section (abbreviated) -->
+  <section id="hobby" class="relative py-20 w-full bg-gradient-to-b from-blue-900 to-purple-900">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-semibold text-center text-white mb-12">My Hobbies & Interests</h2>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4">
+        <div class="glassmorphism p-6 text-center card bg-black bg-opacity-20">
+          <div class="text-4xl text-teal-300 mb-4 bg-teal-900 bg-opacity-50 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto">
+            <i class="fas fa-water"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-white">Diving & Snorkeling</h3>
+          <p class="text-gray-300">Exploring underwater ecosystems and connecting with marine life to refresh my mind and gain new perspectives.</p>
+        </div>
+        
+        <div class="glassmorphism p-6 text-center card bg-black bg-opacity-20">
+          <div class="text-4xl text-green-300 mb-4 bg-green-900 bg-opacity-50 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto">
+            <i class="fas fa-book"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-white">Psychology Literature</h3>
+          <p class="text-gray-300">Diving into the latest research in cognitive and cultural psychology, as well as philosophical perspectives on consciousness.</p>
+        </div>
+        
+        <div class="glassmorphism p-6 text-center card bg-black bg-opacity-20">
+          <div class="text-4xl text-purple-300 mb-4 bg-purple-900 bg-opacity-50 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto">
+            <i class="fas fa-camera"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-white">Photography</h3>
+          <p class="text-gray-300">Capturing moments and perspectives through underwater photography and portraiture, telling stories through visual imagery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section (WITH PURPLE DESIGN) -->
+  <section id="contact" class="relative py-20 w-full bg-purple-900">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-4xl md:text-5xl font-bold text-center text-white mb-16">Get In Touch</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="bg-purple-800 bg-opacity-80 rounded-xl p-8 shadow-xl">
+          <h3 class="text-2xl font-bold mb-8 text-white">Contact Information</h3>
+          
+          <div class="space-y-8">
+            <div class="flex items-start">
+              <div class="text-white mr-4 mt-1">
+                <i class="far fa-envelope text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-white text-lg mb-1">Email</h4>
+                <p class="text-gray-300">xianglutang111@gmail.com</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="text-white mr-4 mt-1">
+                <i class="fas fa-map-marker-alt text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-white text-lg mb-1">Location</h4>
+                <p class="text-gray-300">Hong Kong</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="text-white mr-4 mt-1">
+                <i class="fas fa-university text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="font-medium text-white text-lg mb-1">Academic Affiliation</h4>
+                <p class="text-gray-300">Department of Applied Psychology<br>Hong Kong Baptist University</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-10">
+            <h4 class="font-medium text-white text-lg mb-4">Connect With Me</h4>
+            <div class="flex space-x-4">
+              <a href="https://twitter.com/" target="_blank" class="w-12 h-12 rounded-full bg-purple-700 hover:bg-purple-600 text-white flex items-center justify-center transition-colors">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="w-12 h-12 rounded-full bg-purple-700 hover:bg-purple-600 text-white flex items-center justify-center transition-colors">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="w-12 h-12 rounded-full bg-purple-700 hover:bg-purple-600 text-white flex items-center justify-center transition-colors">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" class="w-12 h-12 rounded-full bg-purple-700 hover:bg-purple-600 text-white flex items-center justify-center transition-colors">
+                <i class="fas fa-graduation-cap"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-purple-800 bg-opacity-80 rounded-xl p-8 shadow-xl">
+          <h3 class="text-2xl font-bold mb-8 text-white">Send Me a Message</h3>
+          <form>
+            <div class="mb-6">
+              <label for="name" class="block text-white mb-2">Your Name</label>
+              <input type="text" id="name" class="w-full px-4 py-3 bg-purple-700 border border-purple-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white" placeholder="Enter your name">
+            </div>
+            
+            <div class="mb-6">
+              <label for="email" class="block text-white mb-2">Your Email</label>
+              <input type="email" id="email" class="w-full px-4 py-3 bg-purple-700 border border-purple-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white" placeholder="Enter your email">
+            </div>
+            
+            <div class="mb-6">
+              <label for="subject" class="block text-white mb-2">Subject</label>
+              <input type="text" id="subject" class="w-full px-4 py-3 bg-purple-700 border border-purple-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white" placeholder="Enter subject">
+            </div>
+            
+            <div class="mb-6">
+              <label for="message" class="block text-white mb-2">Message</label>
+              <textarea id="message" rows="5" class="w-full px-4 py-3 bg-purple-700 border border-purple-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white" placeholder="Write your message here..."></textarea>
+            </div>
+            
+            <button type="submit" class="w-full bg-white hover:bg-gray-200 text-purple-900 font-bold py-3 px-4 rounded-lg transition-colors">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-purple-950 text-white py-8 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+      <p>&copy; 2025 Xianglu TANG. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile menu toggle
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      
+      if (mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener('click', function() {
+          mobileNav.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileNav.querySelectorAll('a');
+mobileLinks.forEach(link => {
+  link.addEventListener('click', function() {
+    mobileNav.classList.remove('active');
+  });
+});
+
+// Back to top button visibility
+const backToTop = document.getElementById('backToTop');
+
+if (backToTop) {
+  window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  });
+}
