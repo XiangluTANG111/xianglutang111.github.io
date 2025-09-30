@@ -36,6 +36,40 @@
     .hover-underline:hover::after { width: 100%; }
     .btn-pulse { animation: pulse 2s infinite; }
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(45, 212, 191, 0); } 100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0); } }
+    
+    /* Chat specific styles */
+    #chatContainer {
+      scrollbar-width: thin;
+      scrollbar-color: #374151 #1f2937;
+    }
+    #chatContainer::-webkit-scrollbar {
+      width: 6px;
+    }
+    #chatContainer::-webkit-scrollbar-track {
+      background: #1f2937;
+      border-radius: 3px;
+    }
+    #chatContainer::-webkit-scrollbar-thumb {
+      background: #374151;
+      border-radius: 3px;
+    }
+    #chatContainer::-webkit-scrollbar-thumb:hover {
+      background: #4b5563;
+    }
+    
+    .chat-message {
+      animation: slideIn 0.3s ease-out;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -44,13 +78,15 @@
     <div class="text-lg font-semibold text-white">Xianglu TANG</div>
     <div class="hidden md:flex space-x-6">
       <a href="#research" class="text-white hover:text-teal-400 transition-colors hover-underline">My Research</a>
-      <a href="#blog" class="text-white hover:text-teal-400 transition-colors hover-underline">Blog</a>
+      <a href="posts.html" class="text-white hover:text-teal-400 transition-colors hover-underline">Research Projects</a>
+      <a href="blog.html" class="text-white hover:text-teal-400 transition-colors hover-underline">Blogs</a>
       <a href="#hobby" class="text-white hover:text-teal-400 transition-colors hover-underline">Hobby</a>
+      <a href="#chat" class="text-white hover:text-teal-400 transition-colors hover-underline">🔮 Chat</a>
       <a href="#contact" class="text-white hover:text-teal-400 transition-colors hover-underline">Contact</a>
       <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="text-white hover:text-teal-400 transition-colors">
         <i class="fab fa-linkedin"></i>
       </a>
-      <a href="https://twitter.com/" target="_blank" class="text-white hover:text-teal-400 transition-colors">
+      <a href="https://x.com/Xianglu_TANG" target="_blank" class="text-white hover:text-teal-400 transition-colors">
         <i class="fa-brands fa-x-twitter"></i>
       </a>
     </div>
@@ -66,13 +102,14 @@
         <i class="fas fa-home mr-2"></i> Home
       </a>
       <a href="#research" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">My Research</a>
-      <a href="#blog" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">Blog</a>
+      <a href="posts.html" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">Research Projects</a>
+      <a href="blog.html" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">Blogs</a>
       <a href="#hobby" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">Hobby</a>
       <a href="#contact" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">Contact</a>
       <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">
         <i class="fab fa-linkedin mr-2"></i> LinkedIn
       </a>
-      <a href="https://twitter.com/" target="_blank" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">
+      <a href="https://x.com/Xianglu_TANG" target="_blank" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">
         <i class="fa-brands fa-x-twitter mr-2"></i> X (Twitter)
       </a>
     </div>
@@ -89,8 +126,8 @@
     <div class="z-10 text-center px-4 max-w-4xl mx-auto">
       <div class="glassmorphism p-8 rounded-xl bg-black bg-opacity-30">
         <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6">Uploading myself to the world.</h1>
-        <p class="mt-2 text-xl md:text-2xl text-white mb-8">Xianglu TANG</p>
-        <a href="#research" class="mt-4 inline-block bg-white hover:bg-gray-200 text-teal-900 font-bold py-3 px-8 rounded-full transition-colors duration-300 shadow-lg transform hover:scale-105 btn-pulse">Discover My Work</a>
+        <p class="mt-2 text-xl md:text-2xl text-white mb-8">Xianglu (TJ) TANG</p>
+        <a href="#research" class="mt-4 inline-block bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full transition-colors duration-300 shadow-lg transform hover:scale-105 btn-pulse">Get to Know Xianglu (TJ)</a>
       </div>
       <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-2xl text-white">
         <i class="fas fa-chevron-down"></i>
@@ -108,7 +145,7 @@
             <i class="fas fa-water text-lg"></i>
           </div>
         </div>
-        <h2 class="text-3xl md:text-4xl font-semibold mt-4 text-white">Hi, I'm Xianglu 🌊</h2>
+        <h2 class="text-3xl md:text-4xl font-semibold mt-4 text-white">Hi, I'm Xianglu/TJ 🌊</h2>
         <p class="text-base md:text-lg text-gray-100 leading-relaxed mt-4 text-center max-w-2xl px-4">
           I'm passionate about <span class="text-teal-300">psychological research</span>, <span class="text-teal-300">technical blogging</span>,
           and building a <span class="text-teal-300">sustainable, healthy lifestyle</span>. With a strong background in
@@ -134,6 +171,65 @@
           <div class="w-3 h-3 rounded-full bg-emerald-500 mr-2"></div>
           <span class="text-xs font-medium">Cognition & Mindfulness</span>
         </span>
+      </div>
+
+      <!-- Chat with Xianglu Section -->
+      <div id="chat" class="mt-16 mb-16">
+        <div class="glassmorphism rounded-2xl p-8 bg-black bg-opacity-30 max-w-4xl mx-auto">
+          <div class="text-center mb-8">
+            <div class="flex items-center justify-center mb-4">
+              <div class="relative">
+                <img src="xianglu.jpg" alt="Xianglu Avatar" class="w-16 h-16 rounded-full object-cover border-2 border-teal-400 shadow-lg" />
+                <div class="absolute -bottom-1 -right-1 bg-green-500 rounded-full p-1">
+                  <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                </div>
+              </div>
+              <div class="ml-4 text-left">
+                <h3 class="text-xl font-semibold text-white">Chat with Xianglu</h3>
+                <p class="text-sm text-gray-300">Ask me anything about my research, psychology, or life!</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Chat Container -->
+          <div id="chatContainer" class="bg-gray-800 rounded-xl p-4 h-80 overflow-y-auto mb-4 border border-gray-600">
+            <div class="flex items-start space-x-3 mb-4">
+              <img src="xianglu.jpg" alt="Xianglu" class="w-8 h-8 rounded-full object-cover flex-shrink-0" />
+              <div class="bg-teal-600 text-white p-3 rounded-lg max-w-xs">
+                <p class="text-sm">Hi there! 👋 I'm Xianglu. Feel free to ask me anything about my research in psychology, AI, or just have a casual chat!</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Chat Input -->
+          <div class="flex space-x-3">
+            <input 
+              type="text" 
+              id="chatInput" 
+              placeholder="Type your message here..." 
+              class="flex-1 bg-gray-700 text-white p-3 rounded-lg border border-gray-600 focus:border-teal-400 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-50"
+              maxlength="500"
+            />
+            <button 
+              id="sendButton" 
+              class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg transition-colors duration-200 flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <i class="fas fa-paper-plane"></i>
+              <span class="hidden sm:inline">Send</span>
+            </button>
+          </div>
+          
+          <!-- Typing Indicator -->
+          <div id="typingIndicator" class="hidden mt-3 flex items-center space-x-2 text-gray-400">
+            <img src="xianglu.jpg" alt="Xianglu" class="w-6 h-6 rounded-full object-cover" />
+            <div class="flex space-x-1">
+              <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+              <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+              <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+            </div>
+            <span class="text-sm">Xianglu is typing...</span>
+          </div>
+        </div>
       </div>
 
       <h3 class="text-2xl md:text-3xl font-semibold text-white mb-8 text-center">Research Projects</h3>
@@ -219,7 +315,7 @@
       </div>
       
       <div class="mt-10 text-center">
-        <a href="#" class="inline-block bg-white text-teal-900 hover:bg-gray-200 font-medium py-3 px-8 rounded-full transition-colors duration-300 shadow-lg transform hover:scale-105">View All Research</a>
+        <a href="posts.html" class="inline-block bg-teal-600 text-white hover:bg-teal-700 font-medium py-3 px-8 rounded-full transition-colors duration-300 shadow-lg transform hover:scale-105">View All Research</a>
       </div>
     </div>
   </section>
@@ -346,7 +442,7 @@
       </div>
       
       <div class="mt-10 text-center">
-        <a href="#" class="inline-block bg-white text-teal-900 hover:bg-gray-200 font-medium py-3 px-8 rounded-full transition-colors duration-300 shadow-lg transform hover:scale-105">View All Posts</a>
+        <a href="blog.html" class="inline-block bg-teal-600 text-white hover:bg-teal-700 font-medium py-3 px-8 rounded-full transition-colors duration-300 shadow-lg transform hover:scale-105">View All Posts</a>
       </div>
     </div>
   </section>
@@ -356,33 +452,50 @@
     <div class="max-w-6xl mx-auto px-4">
       <h2 class="text-3xl md:text-4xl font-semibold text-center text-white mb-12">My Hobbies & Interests</h2>
       
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-4">
         <div class="glassmorphism p-6 text-center card bg-black bg-opacity-20">
           <div class="text-4xl text-teal-300 mb-4 bg-teal-900 bg-opacity-50 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto">
-            <i class="fas fa-water"></i>
+            <i class="fas fa-fish"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2 text-white">Diving & Snorkeling</h3>
-          <p class="text-gray-300">Exploring underwater ecosystems and connecting with marine life to refresh my mind and gain new perspectives.</p>
+          <h3 class="text-xl font-semibold mb-2 text-white">Fishing</h3>
+          <p class="text-gray-300">Finding peace and patience by the water, connecting with nature while waiting for the perfect catch to refresh my mind.</p>
         </div>
         
         <div class="glassmorphism p-6 text-center card bg-black bg-opacity-20">
           <div class="text-4xl text-green-300 mb-4 bg-green-900 bg-opacity-50 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto">
-            <i class="fas fa-book"></i>
+            <i class="fas fa-microphone"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2 text-white">Psychology Literature</h3>
-          <p class="text-gray-300">Diving into the latest research in cognitive and cultural psychology, as well as philosophical perspectives on consciousness.</p>
+          <h3 class="text-xl font-semibold mb-2 text-white">Stand-up Comedy</h3>
+          <p class="text-gray-300">Enjoying the art of humor and storytelling through stand-up comedy shows, appreciating the wit and creativity of comedians.</p>
         </div>
         
         <div class="glassmorphism p-6 text-center card bg-black bg-opacity-20">
           <div class="text-4xl text-purple-300 mb-4 bg-purple-900 bg-opacity-50 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto">
-            <i class="fas fa-camera"></i>
+            <i class="fas fa-music"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2 text-white">Photography</h3>
-          <p class="text-gray-300">Capturing moments and perspectives through underwater photography and portraiture, telling stories through visual imagery.</p>
+          <h3 class="text-xl font-semibold mb-2 text-white">Dancing</h3>
+          <p class="text-gray-300">Expressing myself through movement and rhythm, finding joy in dancing to different music styles and connecting with the beat.</p>
+        </div>
+        
+        <div class="glassmorphism p-6 text-center card bg-black bg-opacity-20">
+          <div class="text-4xl text-orange-300 mb-4 bg-orange-900 bg-opacity-50 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto">
+            <i class="fas fa-hiking"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-white">Traveling & Hiking</h3>
+          <p class="text-gray-300">Exploring new cultures, cuisines, and landscapes around the world, with <span class="text-yellow-300 font-semibold">Hawaii</span> being my absolute favorite destination for its stunning nature and hiking trails.</p>
+        </div>
+        
+        <div class="glassmorphism p-6 text-center card bg-black bg-opacity-20">
+          <div class="text-4xl text-pink-300 mb-4 bg-pink-900 bg-opacity-50 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto">
+            <i class="fas fa-music"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-2 text-white">Music</h3>
+          <p class="text-gray-300">My favorite singer is <span class="text-pink-300 font-semibold">Khalil Fong (方大同)</span>, the soulful R&B artist from Hawaii who creates beautiful music blending Chinese and Western influences.</p>
         </div>
       </div>
     </div>
   </section>
+  
   
   <!-- Contact Section (WITH PURPLE DESIGN) -->
   <section id="contact" class="relative py-20 w-full bg-purple-900">
@@ -400,7 +513,11 @@
               </div>
               <div>
                 <h4 class="font-medium text-white text-lg mb-1">Email</h4>
-                <p class="text-gray-300">xianglutang111@gmail.com</p>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=xianglutang111@gmail.com&su=Hello%20from%20your%20website&body=Hi%20Xianglu,%0A%0AI%20found%20your%20website%20and%20would%20like%20to%20get%20in%20touch.%0A%0ABest%20regards," 
+                   target="_blank" 
+                   class="text-gray-300 hover:text-white transition-colors">
+                  xianglutang111@gmail.com
+                </a>
               </div>
             </div>
             
@@ -410,7 +527,7 @@
               </div>
               <div>
                 <h4 class="font-medium text-white text-lg mb-1">Location</h4>
-                <p class="text-gray-300">Hong Kong</p>
+                <p class="text-gray-300">Stanford Center at Peking University</p>
               </div>
             </div>
             
@@ -420,7 +537,7 @@
               </div>
               <div>
                 <h4 class="font-medium text-white text-lg mb-1">Academic Affiliation</h4>
-                <p class="text-gray-300">Department of Applied Psychology<br>Hong Kong Baptist University</p>
+                <p class="text-gray-300">Stanford Human-Centered AI Institute</p>
               </div>
             </div>
           </div>
@@ -428,47 +545,30 @@
           <div class="mt-10">
             <h4 class="font-medium text-white text-lg mb-4">Connect With Me</h4>
             <div class="flex space-x-4">
-              <a href="https://twitter.com/" target="_blank" class="w-12 h-12 rounded-full bg-purple-700 hover:bg-purple-600 text-white flex items-center justify-center transition-colors">
+              <a href="https://x.com/Xianglu_TANG" target="_blank" class="w-12 h-12 rounded-full bg-purple-700 hover:bg-purple-600 text-white flex items-center justify-center transition-colors">
                 <i class="fa-brands fa-x-twitter"></i>
               </a>
               <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="w-12 h-12 rounded-full bg-purple-700 hover:bg-purple-600 text-white flex items-center justify-center transition-colors">
                 <i class="fab fa-linkedin-in"></i>
               </a>
-              <a href="#" class="w-12 h-12 rounded-full bg-purple-700 hover:bg-purple-600 text-white flex items-center justify-center transition-colors">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="#" class="w-12 h-12 rounded-full bg-purple-700 hover:bg-purple-600 text-white flex items-center justify-center transition-colors">
-                <i class="fas fa-graduation-cap"></i>
-              </a>
             </div>
           </div>
         </div>
         
-        <div class="bg-purple-800 bg-opacity-80 rounded-xl p-8 shadow-xl">
-          <h3 class="text-2xl font-bold mb-8 text-white">Send Me a Message</h3>
-          <form>
-            <div class="mb-6">
-              <label for="name" class="block text-white mb-2">Your Name</label>
-              <input type="text" id="name" class="w-full px-4 py-3 bg-purple-700 border border-purple-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white" placeholder="Enter your name">
+        <div class="bg-purple-800 bg-opacity-80 rounded-xl p-8 shadow-xl text-center">
+          <h3 class="text-2xl font-bold mb-6 text-white">Get In Touch</h3>
+          <p class="text-gray-300 mb-8">Ready to collaborate or have questions? Let's connect!</p>
+          
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=xianglutang111@gmail.com&su=Hello%20from%20your%20website&body=Hi%20Xianglu,%0A%0AI%20found%20your%20website%20and%20would%20like%20to%20get%20in%20touch.%0A%0ABest%20regards," 
+             target="_blank" 
+             class="inline-flex items-center justify-center w-full bg-white hover:bg-gray-200 text-purple-900 font-bold py-4 px-6 rounded-lg transition-colors text-lg">
+            <i class="fas fa-envelope mr-3"></i>
+            Send Email via Gmail
+          </a>
+          
+          <div class="mt-6 text-center text-gray-300 text-sm">
+            <p>Click to open Gmail with a pre-filled message</p>
             </div>
-            
-            <div class="mb-6">
-              <label for="email" class="block text-white mb-2">Your Email</label>
-              <input type="email" id="email" class="w-full px-4 py-3 bg-purple-700 border border-purple-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white" placeholder="Enter your email">
-            </div>
-            
-            <div class="mb-6">
-              <label for="subject" class="block text-white mb-2">Subject</label>
-              <input type="text" id="subject" class="w-full px-4 py-3 bg-purple-700 border border-purple-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white" placeholder="Enter subject">
-            </div>
-            
-            <div class="mb-6">
-              <label for="message" class="block text-white mb-2">Message</label>
-              <textarea id="message" rows="5" class="w-full px-4 py-3 bg-purple-700 border border-purple-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-white text-white" placeholder="Write your message here..."></textarea>
-            </div>
-            
-            <button type="submit" class="w-full bg-white hover:bg-gray-200 text-purple-900 font-bold py-3 px-4 rounded-lg transition-colors">Send Message</button>
-          </form>
         </div>
       </div>
     </div>
@@ -499,10 +599,10 @@ mobileLinks.forEach(link => {
     mobileNav.classList.remove('active');
   });
 });
+      }
 
 // Back to top button visibility
 const backToTop = document.getElementById('backToTop');
-
 if (backToTop) {
   window.addEventListener('scroll', function() {
     if (window.pageYOffset > 300) {
@@ -512,3 +612,120 @@ if (backToTop) {
     }
   });
 }
+
+      // Chat functionality
+      const chatInput = document.getElementById('chatInput');
+      const sendButton = document.getElementById('sendButton');
+      const chatContainer = document.getElementById('chatContainer');
+      const typingIndicator = document.getElementById('typingIndicator');
+
+      if (chatInput && sendButton && chatContainer) {
+        // Send message function
+        function sendMessage() {
+          const message = chatInput.value.trim();
+          if (!message) return;
+
+          // Add user message
+          addMessage(message, 'user');
+          chatInput.value = '';
+
+          // Show typing indicator
+          showTypingIndicator();
+
+          // Simulate AI response after delay
+          setTimeout(() => {
+            hideTypingIndicator();
+            const response = generateResponse(message);
+            addMessage(response, 'ai');
+          }, 1500 + Math.random() * 1000);
+        }
+
+        // Add message to chat
+        function addMessage(text, sender) {
+          const messageDiv = document.createElement('div');
+          messageDiv.className = 'flex items-start space-x-3 mb-4 chat-message';
+          
+          if (sender === 'user') {
+            messageDiv.innerHTML = `
+              <div class="bg-teal-600 text-white p-3 rounded-lg max-w-xs ml-auto">
+                <p class="text-sm">${text}</p>
+              </div>
+              <img src="xianglu.jpg" alt="You" class="w-8 h-8 rounded-full object-cover flex-shrink-0" />
+            `;
+          } else {
+            messageDiv.innerHTML = `
+              <img src="xianglu.jpg" alt="Xianglu" class="w-8 h-8 rounded-full object-cover flex-shrink-0" />
+              <div class="bg-teal-600 text-white p-3 rounded-lg max-w-xs">
+                <p class="text-sm">${text}</p>
+              </div>
+            `;
+          }
+          
+          chatContainer.appendChild(messageDiv);
+          chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Show typing indicator
+        function showTypingIndicator() {
+          typingIndicator.classList.remove('hidden');
+          chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Hide typing indicator
+        function hideTypingIndicator() {
+          typingIndicator.classList.add('hidden');
+        }
+
+        // Generate AI response
+        function generateResponse(userMessage) {
+          const responses = [
+            "That's a fascinating question! Based on my research in cognitive psychology, I'd say...",
+            "Great question! In my experience with AI and human behavior research...",
+            "I love discussing this topic! From my work at Stanford and Columbia...",
+            "That reminds me of my research on prediction models. Let me share some insights...",
+            "Interesting perspective! In my studies on social psychology...",
+            "Thanks for asking! This connects to my work on mindfulness and cognitive fatigue...",
+            "I'm excited to discuss this! My research in negotiation coaching has shown...",
+            "That's something I've explored in my charity research. Here's what I found...",
+            "Wonderful question! My experience with traditional Chinese medicine research...",
+            "I appreciate you asking! This relates to my work on power dynamics and ethics..."
+          ];
+          
+          return responses[Math.floor(Math.random() * responses.length)];
+        }
+
+        // Event listeners
+        sendButton.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            sendMessage();
+          }
+        });
+
+        // Auto-focus chat input when chat section is visible
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              chatInput.focus();
+            }
+          });
+        }, { threshold: 0.5 });
+
+        const chatSection = document.getElementById('chat');
+        if (chatSection) {
+          observer.observe(chatSection);
+        }
+      }
+
+    });
+
+  </script>
+
+  <!-- Image Source Attribution -->
+  <div class="fixed bottom-4 right-4 bg-black bg-opacity-75 text-white text-xs px-3 py-2 rounded-lg z-50">
+    <p>Images from: Unsplash</p>
+  </div>
+
+</body>
+</html>
+
