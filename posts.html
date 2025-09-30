@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Posts | Xianglu TANG</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { 
+      font-family: 'Montserrat', sans-serif; 
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+    }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+    .card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3); }
+    .mobile-nav { transition: all 0.3s ease-in-out; transform: translateY(-100%); }
+    .mobile-nav.active { transform: translateY(0); }
+    .back-to-top { position: fixed; bottom: 20px; right: 20px; z-index: 30; transition: all 0.3s ease; opacity: 0; visibility: hidden; }
+    .back-to-top.visible { opacity: 1; visibility: visible; }
+    .glassmorphism { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #1a1a1a; }
+    ::-webkit-scrollbar-thumb { background: #0d9488; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0f766e; }
+    .hover-underline { position: relative; }
+    .hover-underline::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #2dd4bf; transition: width 0.3s ease; }
+    .hover-underline:hover::after { width: 100%; }
+    .btn-pulse { animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(45, 212, 191, 0); } 100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0); } }
+    
+    /* Post specific styles */
+    .post-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    .post-card:hover {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+      border-color: rgba(45, 212, 191, 0.3);
+    }
+    .post-tag {
+      background: linear-gradient(135deg, #0d9488, #14b8a6);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .read-more-btn {
+      background: linear-gradient(135deg, #0d9488, #14b8a6);
+      transition: all 0.3s ease;
+    }
+    .read-more-btn:hover {
+      background: linear-gradient(135deg, #0f766e, #0d9488);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 glassmorphism">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="index.html" class="text-2xl font-bold text-teal-400 hover:text-teal-300 transition-colors">
+            Xianglu TANG
+          </a>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">Home</a>
+          <a href="index.html#research" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">My Research</a>
+          <a href="posts.html" class="text-teal-400 font-medium">Research Projects</a>
+          <a href="blog.html" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">Blogs</a>
+          <a href="index.html#hobby" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">Hobby</a>
+          <a href="index.html#chat" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">🔮 Chat</a>
+          <a href="index.html#contact" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">Contact</a>
+          <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="text-gray-300 hover:text-teal-400 transition-colors">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://x.com/Xianglu_TANG" target="_blank" class="text-gray-300 hover:text-teal-400 transition-colors">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-btn" class="text-gray-300 hover:text-teal-400 focus:outline-none">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <div id="mobile-nav" class="mobile-nav md:hidden glassmorphism">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="index.html" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">Home</a>
+        <a href="index.html#research" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">My Research</a>
+        <a href="posts.html" class="block px-3 py-2 text-teal-400 font-medium">Research Projects</a>
+        <a href="blog.html" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">Blogs</a>
+        <a href="index.html#hobby" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">Hobby</a>
+        <a href="index.html#chat" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">🔮 Chat</a>
+        <a href="index.html#contact" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">Contact</a>
+        <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">
+          <i class="fab fa-linkedin mr-2"></i> LinkedIn
+        </a>
+        <a href="https://x.com/Xianglu_TANG" target="_blank" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">
+          <i class="fa-brands fa-x-twitter mr-2"></i> X (Twitter)
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="pt-16">
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-900 via-teal-900/20 to-gray-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+          Research Posts
+        </h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          Exploring the intersection of psychology, AI, and human behavior through rigorous research and thoughtful analysis
+        </p>
+      </div>
+    </section>
+
+    <!-- Posts Grid -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Filter Tags -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <button class="filter-btn post-tag active" data-filter="all">All</button>
+          <button class="filter-btn post-tag" data-filter="cognitive">Cognitive Psychology</button>
+          <button class="filter-btn post-tag" data-filter="social">Social Psychology</button>
+          <button class="filter-btn post-tag" data-filter="ai">AI & Technology</button>
+          <button class="filter-btn post-tag" data-filter="methodology">Research Methods</button>
+        </div>
+
+        <!-- Posts Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
+          
+          <!-- Post 1 -->
+          <article class="post-card card rounded-xl p-6" data-category="cognitive">
+            <div class="mb-4">
+              <span class="post-tag">Cognitive Psychology</span>
+              <span class="text-gray-400 text-sm ml-2">Dec 2024</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-teal-300">Predictive Models in Cognitive Psychology</h3>
+            <p class="text-gray-300 mb-4 line-clamp-3">
+              Exploring how machine learning predictive models can enhance our understanding of human cognitive processes, particularly in decision-making and memory formation. This research opens new pathways in cognitive science...
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-400">5 min read</span>
+              <button class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                Read More
+              </button>
+            </div>
+          </article>
+
+          <!-- Post 2 -->
+          <article class="post-card card rounded-xl p-6" data-category="ai">
+            <div class="mb-4">
+              <span class="post-tag">AI & Technology</span>
+              <span class="text-gray-400 text-sm ml-2">Nov 2024</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-teal-300">AI-Driven Negotiation Coaching Systems</h3>
+            <p class="text-gray-300 mb-4 line-clamp-3">
+              Insights from developing the ACE system in collaboration with Columbia Business School, exploring how AI technology can empower underrepresented groups and women in negotiation scenarios through personalized guidance...
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-400">7 min read</span>
+              <button class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                Read More
+              </button>
+            </div>
+          </article>
+
+          <!-- Post 3 -->
+          <article class="post-card card rounded-xl p-6" data-category="social">
+            <div class="mb-4">
+              <span class="post-tag">Social Psychology</span>
+              <span class="text-gray-400 text-sm ml-2">Oct 2024</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-teal-300">Power Dynamics in Social Psychology</h3>
+            <p class="text-gray-300 mb-4 line-clamp-3">
+              Deep analysis of how power structures influence individual behavior and social interactions, and the implications of these findings for organizational management and policy development...
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-400">6 min read</span>
+              <button class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                Read More
+              </button>
+            </div>
+          </article>
+
+          <!-- Post 4 -->
+          <article class="post-card card rounded-xl p-6" data-category="social">
+            <div class="mb-4">
+              <span class="post-tag">Social Psychology</span>
+              <span class="text-gray-400 text-sm ml-2">Sep 2024</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-teal-300">Narrative Effects on Charitable Giving</h3>
+            <p class="text-gray-300 mb-4 line-clamp-3">
+              Based on undergraduate thesis findings, examining how different narrative strategies influence donation intentions and the implications for NGO fundraising strategies...
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-400">8 min read</span>
+              <button class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                Read More
+              </button>
+            </div>
+          </article>
+
+          <!-- Post 5 -->
+          <article class="post-card card rounded-xl p-6" data-category="methodology">
+            <div class="mb-4">
+              <span class="post-tag">Research Methods</span>
+              <span class="text-gray-400 text-sm ml-2">Aug 2024</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-teal-300">Experimental Design in Behavioral Research</h3>
+            <p class="text-gray-300 mb-4 line-clamp-3">
+              Best practices for designing robust experiments in behavioral psychology, including considerations for power analysis, randomization, and controlling for confounding variables...
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-400">4 min read</span>
+              <button class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                Read More
+              </button>
+            </div>
+          </article>
+
+          <!-- Post 6 -->
+          <article class="post-card card rounded-xl p-6" data-category="ai">
+            <div class="mb-4">
+              <span class="post-tag">AI & Technology</span>
+              <span class="text-gray-400 text-sm ml-2">Jul 2024</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-teal-300">LLMs in Psychological Research</h3>
+            <p class="text-gray-300 mb-4 line-clamp-3">
+              Exploring the potential and challenges of large language models in psychological research, and ensuring reliability and ethics when using AI tools in academic research...
+            </p>
+            <div class="flex items-center justify-between">
+              <span class="text-sm text-gray-400">9 min read</span>
+              <button class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                Read More
+              </button>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top bg-teal-600 hover:bg-teal-700 text-white p-3 rounded-full shadow-lg transition-all duration-300">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold text-teal-400 mb-4">Xianglu TANG</h3>
+          <p class="text-gray-300">
+            Psychology Researcher & AI Enthusiast<br>
+            Stanford University & Columbia Business School
+          </p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-teal-400 mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-300 hover:text-teal-400 transition-colors">Home</a></li>
+            <li><a href="index.html#research" class="text-gray-300 hover:text-teal-400 transition-colors">My Research</a></li>
+            <li><a href="posts.html" class="text-gray-300 hover:text-teal-400 transition-colors">Research Projects</a></li>
+            <li><a href="blog.html" class="text-gray-300 hover:text-teal-400 transition-colors">Blogs</a></li>
+            <li><a href="index.html#hobby" class="text-gray-300 hover:text-teal-400 transition-colors">Hobby</a></li>
+            <li><a href="index.html#chat" class="text-gray-300 hover:text-teal-400 transition-colors">🔮 Chat</a></li>
+            <li><a href="index.html#contact" class="text-gray-300 hover:text-teal-400 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-teal-400 mb-4">Connect</h4>
+          <div class="flex space-x-4">
+            <a href="mailto:xianglutang111@gmail.com" class="text-gray-300 hover:text-teal-400 transition-colors">
+              <i class="fas fa-envelope text-xl"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="text-gray-300 hover:text-teal-400 transition-colors">
+              <i class="fab fa-linkedin text-xl"></i>
+            </a>
+            <a href="https://x.com/Xianglu_TANG" target="_blank" class="text-gray-300 hover:text-teal-400 transition-colors">
+              <i class="fa-brands fa-x-twitter text-xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400">&copy; 2024 Xianglu TANG. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    const mobileLinks = mobileNav.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+      });
+    });
+
+    // Back to top functionality
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const posts = document.querySelectorAll('.post-card');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        const filter = button.getAttribute('data-filter');
+        
+        posts.forEach(post => {
+          if (filter === 'all' || post.getAttribute('data-category') === filter) {
+            post.style.display = 'block';
+            post.style.animation = 'fadeIn 0.5s ease-in-out';
+          } else {
+            post.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Add fadeIn animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Read more button functionality (placeholder)
+    const readMoreButtons = document.querySelectorAll('.read-more-btn');
+    readMoreButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // This would typically open a detailed post page or modal
+        alert('This would open the full post content. You can implement individual post pages or a modal system here.');
+      });
+    });
+  </script>
+</body>
+</html>

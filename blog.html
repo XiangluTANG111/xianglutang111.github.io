@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Xianglu TANG</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { 
+      font-family: 'Montserrat', sans-serif; 
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+    }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+    .card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.3); }
+    .mobile-nav { transition: all 0.3s ease-in-out; transform: translateY(-100%); }
+    .mobile-nav.active { transform: translateY(0); }
+    .back-to-top { position: fixed; bottom: 20px; right: 20px; z-index: 30; transition: all 0.3s ease; opacity: 0; visibility: hidden; }
+    .back-to-top.visible { opacity: 1; visibility: visible; }
+    .glassmorphism { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #1a1a1a; }
+    ::-webkit-scrollbar-thumb { background: #0d9488; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0f766e; }
+    .hover-underline { position: relative; }
+    .hover-underline::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0; background-color: #2dd4bf; transition: width 0.3s ease; }
+    .hover-underline:hover::after { width: 100%; }
+    .btn-pulse { animation: pulse 2s infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(45, 212, 191, 0); } 100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0); } }
+    
+    /* Blog specific styles */
+    .blog-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    .blog-card:hover {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%);
+      border-color: rgba(45, 212, 191, 0.3);
+    }
+    .blog-tag {
+      background: linear-gradient(135deg, #0d9488, #14b8a6);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    .read-more-btn {
+      background: linear-gradient(135deg, #0d9488, #14b8a6);
+      transition: all 0.3s ease;
+    }
+    .read-more-btn:hover {
+      background: linear-gradient(135deg, #0f766e, #0d9488);
+      transform: translateY(-2px);
+    }
+    .blog-category {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 glassmorphism">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="index.html" class="text-2xl font-bold text-teal-400 hover:text-teal-300 transition-colors">
+            Xianglu TANG
+          </a>
+        </div>
+        
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">Home</a>
+          <a href="index.html#research" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">My Research</a>
+          <a href="posts.html" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">Research Projects</a>
+          <a href="blog.html" class="text-teal-400 font-medium">Blogs</a>
+          <a href="index.html#hobby" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">Hobby</a>
+          <a href="index.html#chat" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">🔮 Chat</a>
+          <a href="index.html#contact" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">Contact</a>
+          <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="text-gray-300 hover:text-teal-400 transition-colors">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://x.com/Xianglu_TANG" target="_blank" class="text-gray-300 hover:text-teal-400 transition-colors">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-btn" class="text-gray-300 hover:text-teal-400 focus:outline-none">
+            <i class="fas fa-bars text-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <div id="mobile-nav" class="mobile-nav md:hidden glassmorphism">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="index.html" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">Home</a>
+        <a href="index.html#research" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">My Research</a>
+        <a href="posts.html" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">Research Projects</a>
+        <a href="blog.html" class="block px-3 py-2 text-teal-400 font-medium">Blogs</a>
+        <a href="index.html#hobby" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">Hobby</a>
+        <a href="index.html#chat" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">🔮 Chat</a>
+        <a href="index.html#contact" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">Contact</a>
+        <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">
+          <i class="fab fa-linkedin mr-2"></i> LinkedIn
+        </a>
+        <a href="https://x.com/Xianglu_TANG" target="_blank" class="block px-3 py-2 text-gray-300 hover:text-teal-400 transition-colors">
+          <i class="fa-brands fa-x-twitter mr-2"></i> X (Twitter)
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="pt-16">
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-900 via-teal-900/20 to-gray-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+          Blog
+        </h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          Thoughts on technology, life lessons, and the intersection of AI with human experience
+        </p>
+      </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Filter Tags -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          <button class="filter-btn blog-tag active" data-filter="all">All</button>
+          <button class="filter-btn blog-tag" data-filter="ai">AI Tools</button>
+          <button class="filter-btn blog-tag" data-filter="web">Web Development</button>
+          <button class="filter-btn blog-tag" data-filter="research">Research</button>
+          <button class="filter-btn blog-tag" data-filter="life">Life Lessons</button>
+          <button class="filter-btn blog-tag" data-filter="medicine">Traditional Medicine</button>
+        </div>
+
+        <!-- Blog Posts Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
+          
+          <!-- Blog Post 1 -->
+          <article class="blog-card card rounded-xl overflow-hidden" data-category="ai">
+            <div class="relative h-48 bg-teal-800 overflow-hidden">
+              <div class="absolute inset-0 flex items-center justify-center text-white">
+                <i class="fas fa-robot text-6xl opacity-50"></i>
+              </div>
+              <div class="blog-category">
+                <span class="blog-tag">AI Tools</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="mb-4">
+                <span class="text-gray-400 text-sm">April 5, 2025</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 text-teal-300">Rapid Literature Review: Using AI APIs to Filter Research Papers</h3>
+              <p class="text-gray-300 mb-4 line-clamp-3">
+                Learn how to streamline your literature review process by integrating AI tools via APIs to quickly identify and organize relevant research papers. This guide covers practical implementation strategies...
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-400">8 min read</span>
+                <button class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                  Read More
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 2 -->
+          <article class="blog-card card rounded-xl overflow-hidden" data-category="web">
+            <div class="relative h-48 bg-purple-800 overflow-hidden">
+              <div class="absolute inset-0 flex items-center justify-center text-white">
+                <i class="fas fa-code text-6xl opacity-50"></i>
+              </div>
+              <div class="blog-category">
+                <span class="blog-tag">Web Development</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="mb-4">
+                <span class="text-gray-400 text-sm">March 21, 2025</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 text-teal-300">Building Professional Websites with AI: A Researcher's Guide</h3>
+              <p class="text-gray-300 mb-4 line-clamp-3">
+                A comprehensive tutorial on leveraging AI tools to create responsive, professional websites for academics and researchers without coding experience. Step-by-step implementation guide...
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-400">12 min read</span>
+                <button class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                  Read More
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 3 -->
+          <article class="blog-card card rounded-xl overflow-hidden" data-category="research">
+            <div class="relative h-48 bg-blue-800 overflow-hidden">
+              <div class="absolute inset-0 flex items-center justify-center text-white">
+                <i class="fas fa-flask text-6xl opacity-50"></i>
+              </div>
+              <div class="blog-category">
+                <span class="blog-tag">Research</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="mb-4">
+                <span class="text-gray-400 text-sm">February 14, 2025</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 text-teal-300">AI in Scientific Research: Obtaining High-Quality Information Without Hallucinations</h3>
+              <p class="text-gray-300 mb-4 line-clamp-3">
+                Strategic approaches to using AI tools for research while avoiding common pitfalls like hallucinations and inaccuracies in AI-generated content. Best practices and verification methods...
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-400">10 min read</span>
+                <button class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                  Read More
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 4 -->
+          <article class="blog-card card rounded-xl overflow-hidden" data-category="ai">
+            <div class="relative h-48 bg-green-800 overflow-hidden">
+              <div class="absolute inset-0 flex items-center justify-center text-white">
+                <i class="fas fa-award text-6xl opacity-50"></i>
+              </div>
+              <div class="blog-category">
+                <span class="blog-tag">AI Review</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="mb-4">
+                <span class="text-gray-400 text-sm">January 30, 2025</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 text-teal-300">AI Tool Review: Selecting the Best AI Assistants for Academic Research</h3>
+              <p class="text-gray-300 mb-4 line-clamp-3">
+                Comprehensive evaluation of current AI tools for academic research, comparing capabilities, accuracy, and integration options across major platforms. Detailed analysis and recommendations...
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-400">15 min read</span>
+                <button class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                  Read More
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 5 -->
+          <article class="blog-card card rounded-xl overflow-hidden" data-category="life">
+            <div class="relative h-48 bg-yellow-800 overflow-hidden">
+              <div class="absolute inset-0 flex items-center justify-center text-white">
+                <i class="fas fa-lightbulb text-6xl opacity-50"></i>
+              </div>
+              <div class="blog-category">
+                <span class="blog-tag">Life Lessons</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="mb-4">
+                <span class="text-gray-400 text-sm">December 12, 2024</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 text-teal-300">20 at 20: The Most Important Lessons I've Learned</h3>
+              <p class="text-gray-300 mb-4 line-clamp-3">
+                Personal reflections on the twenty most valuable insights and principles I've discovered by age twenty, from research practices to life philosophy. A candid look at growth and learning...
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-400">6 min read</span>
+                <button class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                  Read More
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Blog Post 6 -->
+          <article class="blog-card card rounded-xl overflow-hidden" data-category="medicine">
+            <div class="relative h-48 bg-red-800 overflow-hidden">
+              <div class="absolute inset-0 flex items-center justify-center text-white">
+                <i class="fas fa-heartbeat text-6xl opacity-50"></i>
+              </div>
+              <div class="blog-category">
+                <span class="blog-tag">Traditional Medicine</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="mb-4">
+                <span class="text-gray-400 text-sm">November 5, 2024</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 text-teal-300">Practical Guide to Traditional Chinese Medicine in Daily Life</h3>
+              <p class="text-gray-300 mb-4 line-clamp-3">
+                An evidence-based exploration of how traditional Chinese medicine practices can be integrated into modern daily routines for improved wellbeing. Practical tips and scientific backing...
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-400">9 min read</span>
+                <button class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                  Read More
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top bg-teal-600 hover:bg-teal-700 text-white p-3 rounded-full shadow-lg transition-all duration-300">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold text-teal-400 mb-4">Xianglu TANG</h3>
+          <p class="text-gray-300">
+            Psychology Researcher & AI Enthusiast<br>
+            Stanford University & Columbia Business School
+          </p>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-teal-400 mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="text-gray-300 hover:text-teal-400 transition-colors">Home</a></li>
+            <li><a href="index.html#research" class="text-gray-300 hover:text-teal-400 transition-colors">My Research</a></li>
+            <li><a href="posts.html" class="text-gray-300 hover:text-teal-400 transition-colors">Research Projects</a></li>
+            <li><a href="blog.html" class="text-gray-300 hover:text-teal-400 transition-colors">Blogs</a></li>
+            <li><a href="index.html#hobby" class="text-gray-300 hover:text-teal-400 transition-colors">Hobby</a></li>
+            <li><a href="index.html#chat" class="text-gray-300 hover:text-teal-400 transition-colors">🔮 Chat</a></li>
+            <li><a href="index.html#contact" class="text-gray-300 hover:text-teal-400 transition-colors">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold text-teal-400 mb-4">Connect</h4>
+          <div class="flex space-x-4">
+            <a href="mailto:xianglutang111@gmail.com" class="text-gray-300 hover:text-teal-400 transition-colors">
+              <i class="fas fa-envelope text-xl"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="text-gray-300 hover:text-teal-400 transition-colors">
+              <i class="fab fa-linkedin text-xl"></i>
+            </a>
+            <a href="https://x.com/Xianglu_TANG" target="_blank" class="text-gray-300 hover:text-teal-400 transition-colors">
+              <i class="fa-brands fa-x-twitter text-xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+        <p class="text-gray-400">&copy; 2024 Xianglu TANG. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    const mobileLinks = mobileNav.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+      });
+    });
+
+    // Back to top functionality
+    const backToTop = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+    
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const blogPosts = document.querySelectorAll('.blog-card');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        const filter = button.getAttribute('data-filter');
+        
+        blogPosts.forEach(post => {
+          if (filter === 'all' || post.getAttribute('data-category') === filter) {
+            post.style.display = 'block';
+            post.style.animation = 'fadeIn 0.5s ease-in-out';
+          } else {
+            post.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Add fadeIn animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Read more button functionality (placeholder)
+    const readMoreButtons = document.querySelectorAll('.read-more-btn');
+    readMoreButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // This would typically open a detailed blog post page or modal
+        alert('This would open the full blog post content. You can implement individual blog post pages or a modal system here.');
+      });
+    });
+  </script>
+</body>
+</html>
