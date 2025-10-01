@@ -27,6 +27,146 @@
     .back-to-top { position: fixed; bottom: 20px; right: 20px; z-index: 30; transition: all 0.3s ease; opacity: 0; visibility: hidden; }
     .back-to-top.visible { opacity: 1; visibility: visible; }
     .glassmorphism { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); }
+    /* Smooth scroll with offset for fixed header */
+    html { scroll-behavior: smooth; }
+    #favorite-books, #favorite-movies { scroll-margin-top: 100px; }
+    
+    /* 3D Carousel Styles */
+    .perspective-1000 { perspective: 1000px; }
+    .transform-style-preserve-3d { transform-style: preserve-3d; }
+    
+    .book-item {
+      transform-origin: center center;
+      opacity: 0.3;
+      scale: 0.8;
+      z-index: 1;
+    }
+    
+    .book-item.active {
+      opacity: 1;
+      scale: 1;
+      z-index: 10;
+    }
+    
+    .book-item.prev {
+      opacity: 0.6;
+      scale: 0.9;
+      z-index: 5;
+      transform: translateX(-200px) translateZ(-100px) rotateY(30deg);
+    }
+    
+    .book-item.next {
+      opacity: 0.6;
+      scale: 0.9;
+      z-index: 5;
+      transform: translateX(200px) translateZ(-100px) rotateY(-30deg);
+    }
+    
+    .book-item.far-left {
+      opacity: 0.2;
+      scale: 0.6;
+      z-index: 1;
+      transform: translateX(-400px) translateZ(-200px) rotateY(60deg);
+    }
+    
+    .book-item.far-right {
+      opacity: 0.2;
+      scale: 0.6;
+      z-index: 1;
+      transform: translateX(400px) translateZ(-200px) rotateY(-60deg);
+    }
+    
+    /* Hover effect for book descriptions */
+    .book-description {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    /* Carousel button hover effects */
+    #prevBook:hover, #nextBook:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+    }
+    .dropdown { position: relative; display: inline-block; }
+    .dropdown::before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: transparent;
+      z-index: 999;
+    }
+    .dropdown-content { 
+      display: none; 
+      position: absolute; 
+      top: calc(100% + 8px); 
+      left: 0; 
+      background: rgba(15, 23, 42, 0.95); 
+      backdrop-filter: blur(20px); 
+      -webkit-backdrop-filter: blur(20px); 
+      border: 1px solid rgba(20, 184, 166, 0.3); 
+      border-radius: 12px; 
+      min-width: 220px; 
+      z-index: 1000; 
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(20, 184, 166, 0.1); 
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.2s ease;
+    }
+    .dropdown:hover .dropdown-content,
+    .dropdown-content:hover { 
+      display: block; 
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown-content a { 
+      display: block; 
+      padding: 14px 18px; 
+      text-decoration: none; 
+      color: #e2e8f0; 
+      transition: all 0.2s ease; 
+      border-bottom: 1px solid rgba(20, 184, 166, 0.1); 
+      font-size: 14px;
+      position: relative;
+    }
+    .dropdown-content a:last-child { border-bottom: none; }
+    .dropdown-content a:hover { 
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%); 
+      color: #5eead4; 
+      padding-left: 24px;
+      transform: translateX(2px);
+    }
+    .dropdown-content a:hover::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, #14b8a6, #06b6d4);
+    }
+    @keyframes slideInDown { 
+      from { 
+        opacity: 0; 
+        transform: translateY(-12px) scale(0.95); 
+      } 
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+      } 
+    }
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #1a1a1a; }
     ::-webkit-scrollbar-thumb { background: #0d9488; border-radius: 4px; }
@@ -36,6 +176,7 @@
     .hover-underline:hover::after { width: 100%; }
     .btn-pulse { animation: pulse 2s infinite; }
     @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(45, 212, 191, 0); } 100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0); } }
+    
     
     /* Chat specific styles */
     #chatContainer {
@@ -70,6 +211,89 @@
         transform: translateY(0);
       }
     }
+    
+    /* Shooting Stars Animation */
+    .shooting-star {
+      position: absolute;
+      top: -50px;
+      left: 10%;
+      width: 2px;
+      height: 2px;
+      background: linear-gradient(45deg, #ffffff, #a855f7);
+      border-radius: 50%;
+      box-shadow: 0 0 6px #ffffff, 0 0 12px #a855f7, 0 0 18px #8b5cf6;
+      animation: shooting 12s linear infinite;
+    }
+    
+    .shooting-star::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -50px;
+      width: 50px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #ffffff, #a855f7);
+      transform: translateY(-50%);
+    }
+    
+    .shooting-star::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -100px;
+      width: 100px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), rgba(168,85,247,0.3));
+      transform: translateY(-50%);
+    }
+    
+    @keyframes shooting {
+      0% {
+        transform: translateY(-50px) translateX(0) rotate(45deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(300px) rotate(45deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Additional sparkle effects */
+    .shooting-star:nth-child(2) {
+      animation-duration: 15s;
+      background: linear-gradient(45deg, #ffffff, #06b6d4);
+      box-shadow: 0 0 6px #ffffff, 0 0 12px #06b6d4, 0 0 18px #0891b2;
+    }
+    
+    .shooting-star:nth-child(3) {
+      animation-duration: 18s;
+      background: linear-gradient(45deg, #ffffff, #10b981);
+      box-shadow: 0 0 6px #ffffff, 0 0 12px #10b981, 0 0 18px #059669;
+    }
+    
+    .shooting-star:nth-child(4) {
+      animation-duration: 14s;
+      background: linear-gradient(45deg, #ffffff, #f59e0b);
+      box-shadow: 0 0 6px #ffffff, 0 0 12px #f59e0b, 0 0 18px #d97706;
+    }
+    
+    .shooting-star:nth-child(5) {
+      animation-duration: 16s;
+      background: linear-gradient(45deg, #ffffff, #ef4444);
+      box-shadow: 0 0 6px #ffffff, 0 0 12px #ef4444, 0 0 18px #dc2626;
+    }
+    
+    .shooting-star:nth-child(6) {
+      animation-duration: 13s;
+      background: linear-gradient(45deg, #ffffff, #ec4899);
+      box-shadow: 0 0 6px #ffffff, 0 0 12px #ec4899, 0 0 18px #db2777;
+    }
   </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -80,7 +304,17 @@
       <a href="#research" class="text-white hover:text-teal-400 transition-colors hover-underline">My Research</a>
       <a href="posts.html" class="text-white hover:text-teal-400 transition-colors hover-underline">Research Projects</a>
       <a href="blog.html" class="text-white hover:text-teal-400 transition-colors hover-underline">Blogs</a>
+      <div class="dropdown">
       <a href="#hobby" class="text-white hover:text-teal-400 transition-colors hover-underline">Hobby</a>
+        <div class="dropdown-content">
+          <a href="#hobby">🎯 My Hobbies</a>
+          <a href="#favorites">⭐ Annual Favorites</a>
+          <div class="border-t border-teal-500 border-opacity-20 my-2"></div>
+          <a href="#favorites" class="text-xs text-gray-400 pl-6">📚 Favorite Article</a>
+          <a href="#favorite-books" class="text-xs text-gray-400 pl-6">📖 Favorite Books</a>
+          <a href="#favorite-movies" class="text-xs text-gray-400 pl-6">🎬 Favorite Movies</a>
+        </div>
+      </div>
       <a href="#chat" class="text-white hover:text-teal-400 transition-colors hover-underline">🔮 Chat</a>
       <a href="#contact" class="text-white hover:text-teal-400 transition-colors hover-underline">Contact</a>
       <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="text-white hover:text-teal-400 transition-colors">
@@ -104,7 +338,8 @@
       <a href="#research" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">My Research</a>
       <a href="posts.html" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">Research Projects</a>
       <a href="blog.html" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">Blogs</a>
-      <a href="#hobby" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">Hobby</a>
+      <a href="#hobby" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">🎯 My Hobbies</a>
+      <a href="#favorites" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">⭐ Annual Favorites</a>
       <a href="#contact" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">Contact</a>
       <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="py-3 px-4 text-white hover:bg-teal-900 rounded-md mb-1">
         <i class="fab fa-linkedin mr-2"></i> LinkedIn
@@ -454,43 +689,207 @@
       
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 px-4">
         <div class="glassmorphism p-6 text-center card bg-black bg-opacity-20">
-          <div class="text-4xl text-teal-300 mb-4 bg-teal-900 bg-opacity-50 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto">
-            <i class="fas fa-fish"></i>
+          <div class="mb-4 flex items-center justify-center mx-auto">
+            <img src="fishing.jpg" alt="Fishing Adventure" class="w-20 h-20 rounded-full object-cover border-2 border-teal-300 shadow-lg">
           </div>
           <h3 class="text-xl font-semibold mb-2 text-white">Fishing</h3>
           <p class="text-gray-300">Finding peace and patience by the water, connecting with nature while waiting for the perfect catch to refresh my mind.</p>
         </div>
         
         <div class="glassmorphism p-6 text-center card bg-black bg-opacity-20">
-          <div class="text-4xl text-green-300 mb-4 bg-green-900 bg-opacity-50 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto">
-            <i class="fas fa-microphone"></i>
+          <div class="mb-4 flex items-center justify-center mx-auto">
+            <img src="standup.jpg" alt="Stand-up Comedy" class="w-20 h-20 rounded-full object-cover border-2 border-green-300 shadow-lg">
           </div>
           <h3 class="text-xl font-semibold mb-2 text-white">Stand-up Comedy</h3>
           <p class="text-gray-300">Enjoying the art of humor and storytelling through stand-up comedy shows, appreciating the wit and creativity of comedians.</p>
         </div>
         
         <div class="glassmorphism p-6 text-center card bg-black bg-opacity-20">
-          <div class="text-4xl text-purple-300 mb-4 bg-purple-900 bg-opacity-50 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto">
-            <i class="fas fa-music"></i>
+          <div class="mb-4 flex items-center justify-center mx-auto">
+            <img src="dancing.jpg" alt="Dancing Performance" class="w-20 h-20 rounded-full object-cover border-2 border-purple-300 shadow-lg">
           </div>
           <h3 class="text-xl font-semibold mb-2 text-white">Dancing</h3>
-          <p class="text-gray-300">Expressing myself through movement and rhythm, finding joy in dancing to different music styles and connecting with the beat.</p>
+          <p class="text-gray-300">I choreograph and perform contemporary dance, jazz, and hip-hop, expressing myself through movement and rhythm while connecting with the beat.</p>
         </div>
         
         <div class="glassmorphism p-6 text-center card bg-black bg-opacity-20">
-          <div class="text-4xl text-orange-300 mb-4 bg-orange-900 bg-opacity-50 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto">
-            <i class="fas fa-hiking"></i>
+          <div class="mb-4 flex items-center justify-center mx-auto">
+            <img src="hiking.jpg" alt="Hiking Adventure" class="w-20 h-20 rounded-full object-cover border-2 border-orange-300 shadow-lg">
           </div>
           <h3 class="text-xl font-semibold mb-2 text-white">Traveling & Hiking</h3>
           <p class="text-gray-300">Exploring new cultures, cuisines, and landscapes around the world, with <span class="text-yellow-300 font-semibold">Hawaii</span> being my absolute favorite destination for its stunning nature and hiking trails.</p>
         </div>
         
         <div class="glassmorphism p-6 text-center card bg-black bg-opacity-20">
-          <div class="text-4xl text-pink-300 mb-4 bg-pink-900 bg-opacity-50 rounded-full p-4 w-20 h-20 flex items-center justify-center mx-auto">
-            <i class="fas fa-music"></i>
+          <div class="mb-4 flex items-center justify-center mx-auto">
+            <img src="fdt.jpg" alt="Khalil Fong (方大同)" class="w-20 h-20 rounded-full object-cover border-2 border-pink-300 shadow-lg">
           </div>
           <h3 class="text-xl font-semibold mb-2 text-white">Music</h3>
           <p class="text-gray-300">My favorite singer is <span class="text-pink-300 font-semibold">Khalil Fong (方大同)</span>, the soulful R&B artist from Hawaii who creates beautiful music blending Chinese and Western influences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Annual Favorites Section -->
+  <section id="favorites" class="relative py-20 w-full bg-gradient-to-b from-purple-900 to-indigo-900 overflow-hidden">
+    <!-- Shooting Stars Background -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="shooting-star"></div>
+      <div class="shooting-star" style="animation-delay: 2s; left: 20%;"></div>
+      <div class="shooting-star" style="animation-delay: 4s; left: 60%;"></div>
+      <div class="shooting-star" style="animation-delay: 6s; left: 80%;"></div>
+      <div class="shooting-star" style="animation-delay: 8s; left: 40%;"></div>
+      <div class="shooting-star" style="animation-delay: 10s; left: 90%;"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+      <h2 class="text-3xl md:text-4xl font-semibold text-center text-white mb-16">Annual Favorites</h2>
+      
+      <!-- Favorite Article -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-center text-teal-300 mb-8">📚 Favorite Article of the Year</h3>
+        <div class="max-w-4xl mx-auto">
+          <div class="glassmorphism p-8 bg-black bg-opacity-30 rounded-2xl border border-teal-500 border-opacity-30">
+            <div class="flex items-start space-x-6">
+              <div class="flex-shrink-0">
+                <div class="w-16 h-16 bg-teal-600 bg-opacity-50 rounded-full flex items-center justify-center">
+                  <i class="fas fa-file-alt text-2xl text-teal-300"></i>
+                </div>
+              </div>
+              <div class="flex-1">
+                <h4 class="text-xl font-bold text-white mb-3">PNAS: An exploration of basic human values in 38 million obituaries over 30 years</h4>
+                <p class="text-gray-300 mb-4">Being remembered is a truly blessed thing. What do you hope to be remembered for? What is it that you've always wanted to show others, that you've been waiting for? I think the best moment is actually right now.</p>
+                <a href="https://www.pnas.org/doi/abs/10.1073/pnas.2510318122" target="_blank" class="inline-flex items-center text-teal-300 hover:text-teal-200 font-medium transition-colors">
+                  <i class="fas fa-external-link-alt mr-2"></i>
+                  Read the full article
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Favorite Books -->
+      <div id="favorite-books" class="mb-16">
+        <h3 class="text-2xl font-bold text-center text-green-300 mb-8">📖 Favorite Books of the Year</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="glassmorphism p-6 bg-black bg-opacity-30 rounded-xl border border-green-500 border-opacity-30 hover:border-opacity-60 transition-all duration-300 group">
+            <div class="text-center">
+              <div class="w-32 h-48 mx-auto mb-4 group-hover:scale-105 transition-transform shadow-lg">
+                <img src="Reboot.webp" alt="Reboot Book Cover" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <h4 class="text-lg font-bold text-white mb-2">Reboot: Leadership and the Art of Growing Up</h4>
+              <p class="text-gray-300 text-sm mb-3">By Jerry Colonna</p>
+              <p class="text-gray-300 text-sm mb-4">This book helped me get through the darkest moments of my life, no longer afraid of injustice and evil people. Thank you Alice Li for recommending it to me. This also made me become a better mentor afterwards.</p>
+              <a href="https://www.reboot.io/reboot-leadership-and-the-art-of-growing-up/" target="_blank" class="inline-flex items-center text-green-300 hover:text-green-200 font-medium transition-colors text-sm">
+                <i class="fas fa-external-link-alt mr-1"></i>
+                Learn More
+              </a>
+            </div>
+          </div>
+          
+          <div class="glassmorphism p-6 bg-black bg-opacity-30 rounded-xl border border-green-500 border-opacity-30 hover:border-opacity-60 transition-all duration-300 group">
+            <div class="text-center">
+              <div class="w-32 h-48 mx-auto mb-4 group-hover:scale-105 transition-transform shadow-lg">
+                <img src="mushroom.jpg" alt="The Mushroom at the End of the World Book Cover" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <h4 class="text-lg font-bold text-white mb-2">The Mushroom at the End of the World</h4>
+              <p class="text-gray-300 text-sm mb-3">By Anna Lowenhaupt Tsing</p>
+              <div class="max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 mb-4">
+                <p class="text-gray-300 text-sm pr-2">Essential reading for anthropology beginners, a profound reflection on progressivism and neoliberalism. Anyone interested in cultural psychology will love this book. I'm still reading and re-reading it, constantly understanding new layers. It makes me reflect on the slogan 'dreams wake us up.' I hope we can all live abundant, boundless lives.</p>
+              </div>
+              <a href="https://www.goodreads.com/book/show/25510906-the-mushroom-at-the-end-of-the-world" target="_blank" class="inline-flex items-center text-green-300 hover:text-green-200 font-medium transition-colors text-sm">
+                <i class="fas fa-external-link-alt mr-1"></i>
+                Learn More
+              </a>
+            </div>
+          </div>
+          
+          <div class="glassmorphism p-6 bg-black bg-opacity-30 rounded-xl border border-green-500 border-opacity-30 hover:border-opacity-60 transition-all duration-300 group">
+            <div class="text-center">
+              <div class="w-32 h-48 mx-auto mb-4 group-hover:scale-105 transition-transform shadow-lg">
+                <img src="Tao Te Ching.jpg" alt="Tao Te Ching Book Cover" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <h4 class="text-lg font-bold text-white mb-2">Tao Te Ching</h4>
+              <p class="text-gray-300 text-sm mb-3">By Lao Tzu</p>
+              <p class="text-gray-300 text-sm mb-4">Essential reading for the path from art to Tao. If you're interested in Chinese language or Chinese culture, this is a must-read. I hope everyone can be effortless, focusing only on what's in front of them, just doing it well.</p>
+              <a href="https://www.goodreads.com/book/show/67896.Tao_Te_Ching" target="_blank" class="inline-flex items-center text-green-300 hover:text-green-200 font-medium transition-colors text-sm">
+                <i class="fas fa-external-link-alt mr-1"></i>
+                Learn More
+              </a>
+            </div>
+          </div>
+          
+          <div class="glassmorphism p-6 bg-black bg-opacity-30 rounded-xl border border-green-500 border-opacity-30 hover:border-opacity-60 transition-all duration-300 group">
+            <div class="text-center">
+              <div class="w-32 h-48 mx-auto mb-4 group-hover:scale-105 transition-transform shadow-lg">
+                <img src="tennis.jpg" alt="The Inner Game of Tennis Book Cover" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <h4 class="text-lg font-bold text-white mb-2">The Inner Game of Tennis</h4>
+              <p class="text-gray-300 text-sm mb-3">By W. Timothy Gallwey</p>
+              <div class="max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 mb-4">
+                <p class="text-gray-300 text-sm pr-2">This was my first introduction to sports psychology, closely related to my first independent research. It was also the first time I realized the impact of mindset and self-dialogue on a person. It has benefited me for life. Because of this, I've reduced much of my competitive consciousness and focused on myself and the present moment. My mantra is: there's no one else on the court.</p>
+              </div>
+              <a href="https://www.amazon.co.jp/-/en/Inner-Game-Tennis-Classic-Performance/dp/0679778314" target="_blank" class="inline-flex items-center text-green-300 hover:text-green-200 font-medium transition-colors text-sm">
+                <i class="fas fa-external-link-alt mr-1"></i>
+                Learn More
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Favorite Movies -->
+      <div id="favorite-movies">
+        <h3 class="text-2xl font-bold text-center text-red-300 mb-8">🎬 Favorite Movies</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="glassmorphism p-6 bg-black bg-opacity-30 rounded-xl border border-red-500 border-opacity-30 hover:border-opacity-60 transition-all duration-300 group">
+            <div class="text-center">
+              <div class="w-32 h-48 mx-auto mb-4 group-hover:scale-105 transition-transform shadow-lg">
+                <img src="her.jpg" alt="Her" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <h4 class="text-lg font-bold text-white mb-2">Her</h4>
+              <p class="text-gray-300 text-sm mb-3">By Spike Jonze</p>
+              <p class="text-gray-300 text-sm mb-4">"The past is just a story we tell ourselves." - I would call this a prophecy of the future. And the director is so good at directing.</p>
+              <a href="https://www.imdb.com/title/tt1798709/" target="_blank" class="inline-flex items-center text-red-300 hover:text-red-200 font-medium transition-colors text-sm">
+                <i class="fas fa-external-link-alt mr-1"></i>
+                Learn More
+              </a>
+            </div>
+          </div>
+          
+          <div class="glassmorphism p-6 bg-black bg-opacity-30 rounded-xl border border-red-500 border-opacity-30 hover:border-opacity-60 transition-all duration-300 group">
+            <div class="text-center">
+              <div class="w-32 h-48 mx-auto mb-4 group-hover:scale-105 transition-transform shadow-lg">
+                <img src="KF.jpg" alt="Kung Fu Panda Series" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <h4 class="text-lg font-bold text-white mb-2">Kung Fu Panda Series</h4>
+              <p class="text-gray-300 text-sm mb-3">By DreamWorks Animation</p>
+              <p class="text-gray-300 text-sm mb-4">"Your story may not have such a happy beginning, but that doesn't make you who you are. It is the rest of your story, who you choose to be" - It's hard to imagine this was made by non-Chinese creators. I think it's really Chinese. Always an empowering movie series for me.</p>
+              <a href="https://www.dreamworks.com/movies/kung-fu-panda" target="_blank" class="inline-flex items-center text-red-300 hover:text-red-200 font-medium transition-colors text-sm">
+                <i class="fas fa-external-link-alt mr-1"></i>
+                Learn More
+              </a>
+            </div>
+          </div>
+          
+          <div class="glassmorphism p-6 bg-black bg-opacity-30 rounded-xl border border-red-500 border-opacity-30 hover:border-opacity-60 transition-all duration-300 group">
+            <div class="text-center">
+              <div class="w-32 h-48 mx-auto mb-4 group-hover:scale-105 transition-transform shadow-lg">
+                <img src="Arrival.webp" alt="Arrival" class="w-full h-full object-cover rounded-lg">
+              </div>
+              <h4 class="text-lg font-bold text-white mb-2">Arrival</h4>
+              <p class="text-gray-300 text-sm mb-3">By Denis Villeneuve</p>
+              <div class="max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800 mb-4">
+                <p class="text-gray-300 text-sm pr-2">"So, Hannah... This is where your story begins. The day they departed. Despite knowing the journey... and where it leads... I embrace it. And I welcome every moment of it." - I saw this movie in 2016, and it's hard to describe how it has run through my life (nearly 10 years so far). I began to believe that time might not exist. Language is the boundary of how we perceive the world and think about time. Perhaps things don't happen in chronological order, but our language limits how we understand the world. But I learned to accept how things happen. We are like turkeys in a farmer's farm, we might be fish in a pond. In short, it's a mind-blowing story.</p>
+              </div>
+              <a href="https://www.imdb.com/title/tt2543164/" target="_blank" class="inline-flex items-center text-red-300 hover:text-red-200 font-medium transition-colors text-sm">
+                <i class="fas fa-external-link-alt mr-1"></i>
+                Learn More
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -717,16 +1116,70 @@ if (backToTop) {
         }
       }
 
+
+      // Photo Modal functionality
+      const photoModal = document.getElementById('photoModal');
+      const modalPhoto = document.getElementById('modalPhoto');
+      const modalPhotoCaption = document.getElementById('modalPhotoCaption');
+      const closePhotoModal = document.getElementById('closePhotoModal');
+
+      // Global function to open photo modal
+      window.openPhotoModal = function(photoSrc, caption) {
+        modalPhoto.src = photoSrc;
+        modalPhotoCaption.textContent = caption;
+        photoModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      };
+
+      // Close modal function
+      function closeModal() {
+        photoModal.classList.add('hidden');
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }
+
+      // Event listeners for modal
+      if (closePhotoModal) {
+        closePhotoModal.addEventListener('click', closeModal);
+      }
+
+      if (photoModal) {
+        // Close modal when clicking outside the image
+        photoModal.addEventListener('click', function(e) {
+          if (e.target === photoModal) {
+            closeModal();
+          }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && !photoModal.classList.contains('hidden')) {
+            closeModal();
+          }
+        });
+      }
+
     });
 
   </script>
 
+  <!-- Photo Modal -->
+  <div id="photoModal" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden flex items-center justify-center p-4">
+    <div class="relative max-w-4xl max-h-full">
+      <button id="closePhotoModal" class="absolute top-4 right-4 text-white text-2xl hover:text-gray-300 transition-colors z-10">
+        <i class="fas fa-times"></i>
+      </button>
+      <img id="modalPhoto" src="" alt="Enlarged photo" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl">
+      <div class="absolute bottom-4 left-4 text-white bg-black bg-opacity-50 px-4 py-2 rounded-lg">
+        <p id="modalPhotoCaption" class="text-sm"></p>
+      </div>
+    </div>
+  </div>
+
   <!-- Image Source Attribution -->
-  <div class="fixed bottom-4 right-4 bg-black bg-opacity-75 text-white text-xs px-3 py-2 rounded-lg z-50">
-    <p>Images from: Rocurokubi</p>
+  <div class="fixed bottom-4 left-4 glassmorphism text-white text-sm px-4 py-3 rounded-xl z-50 bg-black bg-opacity-40 hover:bg-opacity-50 transition-all duration-300">
+    <p class="font-medium">📸 Images by: <a href="https://www.instagram.com/rocurokub1/" target="_blank" class="text-white hover:text-teal-200 transition-colors font-semibold underline decoration-2 underline-offset-2 hover:decoration-teal-200">@rocurokub1</a></p>
   </div>
 
 </body>
 </html>
-
 
