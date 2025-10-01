@@ -22,6 +22,79 @@
     .back-to-top { position: fixed; bottom: 20px; right: 20px; z-index: 30; transition: all 0.3s ease; opacity: 0; visibility: hidden; }
     .back-to-top.visible { opacity: 1; visibility: visible; }
     .glassmorphism { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); }
+    .dropdown { position: relative; display: inline-block; }
+    .dropdown::before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: transparent;
+      z-index: 999;
+    }
+    .dropdown-content { 
+      display: none; 
+      position: absolute; 
+      top: calc(100% + 8px); 
+      left: 0; 
+      background: rgba(15, 23, 42, 0.95); 
+      backdrop-filter: blur(20px); 
+      -webkit-backdrop-filter: blur(20px); 
+      border: 1px solid rgba(20, 184, 166, 0.3); 
+      border-radius: 12px; 
+      min-width: 220px; 
+      z-index: 1000; 
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(20, 184, 166, 0.1); 
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.2s ease;
+    }
+    .dropdown:hover .dropdown-content,
+    .dropdown-content:hover { 
+      display: block; 
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .dropdown-content a { 
+      display: block; 
+      padding: 14px 18px; 
+      text-decoration: none; 
+      color: #e2e8f0; 
+      transition: all 0.2s ease; 
+      border-bottom: 1px solid rgba(20, 184, 166, 0.1); 
+      font-size: 14px;
+      position: relative;
+    }
+    .dropdown-content a:last-child { border-bottom: none; }
+    .dropdown-content a:hover { 
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%); 
+      color: #5eead4; 
+      padding-left: 24px;
+      transform: translateX(2px);
+    }
+    .dropdown-content a:hover::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, #14b8a6, #06b6d4);
+    }
+    @keyframes slideInDown { 
+      from { 
+        opacity: 0; 
+        transform: translateY(-12px) scale(0.95); 
+      } 
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+      } 
+    }
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #1a1a1a; }
     ::-webkit-scrollbar-thumb { background: #0d9488; border-radius: 4px; }
@@ -77,7 +150,17 @@
           <a href="index.html#research" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">My Research</a>
           <a href="posts.html" class="text-teal-400 font-medium">Research Projects</a>
           <a href="blog.html" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">Blogs</a>
-          <a href="index.html#hobby" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">Hobby</a>
+          <div class="dropdown">
+            <a href="index.html#hobby" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">Hobby</a>
+            <div class="dropdown-content">
+              <a href="index.html#hobby">🎯 My Hobbies</a>
+              <a href="index.html#favorites">⭐ Annual Favorites</a>
+              <div class="border-t border-teal-500 border-opacity-20 my-2"></div>
+              <a href="index.html#favorites" class="text-xs text-gray-400 pl-6">📚 Favorite Article</a>
+              <a href="index.html#favorite-books" class="text-xs text-gray-400 pl-6">📖 Favorite Books</a>
+              <a href="index.html#favorite-movies" class="text-xs text-gray-400 pl-6">🎬 Favorite Movies</a>
+            </div>
+          </div>
           <a href="index.html#chat" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">🔮 Chat</a>
           <a href="index.html#contact" class="text-gray-300 hover:text-teal-400 transition-colors hover-underline">Contact</a>
           <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="text-gray-300 hover:text-teal-400 transition-colors">
@@ -120,9 +203,10 @@
   <!-- Main Content -->
   <main class="pt-16">
     <!-- Hero Section -->
-    <section class="py-20 bg-gradient-to-br from-gray-900 via-teal-900/20 to-gray-900">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+    <section class="relative py-20 w-full flex items-center justify-center text-white" style="background: url('humanic.jpg') center/cover no-repeat;">
+      <div class="absolute inset-0 bg-gradient-to-b from-black bg-opacity-50 to-transparent"></div>
+      <div class="z-10 text-center px-4 max-w-4xl mx-auto">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 text-white">
           Research Posts
         </h1>
         <p class="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -387,5 +471,10 @@
       });
     });
   </script>
+
+  <!-- Image Source Attribution -->
+  <div class="fixed bottom-4 left-4 glassmorphism text-white text-sm px-4 py-3 rounded-xl z-50 bg-black bg-opacity-40 hover:bg-opacity-50 transition-all duration-300">
+    <p class="font-medium">📸 Images by: <a href="https://www.instagram.com/rocurokub1/" target="_blank" class="text-white hover:text-teal-200 transition-colors font-semibold underline decoration-2 underline-offset-2 hover:decoration-teal-200">@rocurokub1</a></p>
+  </div>
 </body>
 </html>
