@@ -1,0 +1,33 @@
+GitHub Pages 部署文件清单
+========================
+
+需要上传到 https://github.com/XiangluTANG111/xianglutang111.github.io 的文件：
+
+✅ 必需文件：
+1. index.html (40,332 bytes) - 主页，包含完整的个人介绍和研究项目
+2. posts.html - 研究项目详细页面
+3. blog.html (22,102 bytes) - 博客页面
+4. xianglu.jpg - 个人照片
+5. nature.jpg - 背景图片
+
+📋 部署步骤：
+1. 访问：https://github.com/XiangluTANG111/xianglutang111.github.io
+2. 删除现有文件（如果有）
+3. 点击 "Add file" → "Upload files"
+4. 拖拽上述5个文件到上传区域
+5. 提交信息：Update personal website with complete portfolio
+6. 点击 "Commit changes"
+7. 进入 Settings → Pages → 选择 "Deploy from a branch" → "main" → "/ (root)"
+8. 等待1-5分钟部署完成
+9. 访问：https://xianglutang111.github.io
+
+🎯 网站功能：
+- 响应式设计，支持手机和桌面
+- 研究项目展示
+- 博客功能
+- 现代化UI界面
+- 专业学术风格
+- 移动端优化
+
+📱 移动端测试：
+部署完成后在手机上访问 https://xianglutang111.github.io 测试所有功能

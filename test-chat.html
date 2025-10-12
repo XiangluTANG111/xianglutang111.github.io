@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聊天功能测试 - Xianglu TANG</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .chat-container {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #f9f9f9;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 80%;
+        }
+        .user-message {
+            background: #007bff;
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+        .ai-message {
+            background: #e9ecef;
+            color: #333;
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+        .chat-input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+        .send-button {
+            padding: 12px 25px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .send-button:hover {
+            background: #0056b3;
+        }
+        .send-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .typing-indicator {
+            display: none;
+            color: #666;
+            font-style: italic;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+        .status.info { background: #d1ecf1; color: #0c5460; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 聊天功能测试</h1>
+        <p>测试您的AI助手是否正常工作</p>
+        
+        <div class="chat-container" id="chatContainer">
+            <div class="message ai-message">
+                👋 您好！我是Xianglu TANG的AI助手。请发送一条消息来测试聊天功能！
+            </div>
+        </div>
+        
+        <div class="typing-indicator" id="typingIndicator">
+            AI正在思考中...
+        </div>
+        
+        <div class="input-group">
+            <input type="text" class="chat-input" id="chatInput" placeholder="输入您的消息..." />
+            <button class="send-button" id="sendButton">发送</button>
+        </div>
+        
+        <div class="status info" id="status">
+            准备就绪 - 请发送一条测试消息
+        </div>
+    </div>
+
+    <script>
+        const chatInput = document.getElementById('chatInput');
+        const sendButton = document.getElementById('sendButton');
+        const chatContainer = document.getElementById('chatContainer');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const status = document.getElementById('status');
+
+        // 配置API - 多个备用方案
+        const NUWA_API_KEY = 'sk-qu856g9uNAIfudyPH9sDBDgwp9YldlcGRnk4UEndo6gKSpbk';
+        
+        // 更可靠的代理服务列表
+        const PROXY_URLS = [
+            'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://api.nuwaapi.com/v1/chat/completions'),
+            'https://thingproxy.freeboard.io/fetch/' + encodeURIComponent('https://api.nuwaapi.com/v1/chat/completions'),
+            'https://cors-anywhere.herokuapp.com/https://api.nuwaapi.com/v1/chat/completions'
+        ];
+        const DIRECT_URL = 'https://api.nuwaapi.com/v1/chat/completions';
+        
+        // 添加更多备用代理
+        const BACKUP_PROXY_URLS = [
+            'https://api.codetabs.com/v1/proxy?url=' + encodeURIComponent('https://api.nuwaapi.com/v1/chat/completions'),
+            'https://corsproxy.io/?' + encodeURIComponent('https://api.nuwaapi.com/v1/chat/completions')
+        ];
+        
+        let chatHistory = [];
+
+        // 添加消息到聊天容器
+        function addMessage(content, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            messageDiv.textContent = content;
+            chatContainer.appendChild(messageDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // 显示/隐藏打字指示器
+        function showTypingIndicator() {
+            typingIndicator.style.display = 'block';
+        }
+
+        function hideTypingIndicator() {
+            typingIndicator.style.display = 'none';
+        }
+
+        // 更新状态
+        function updateStatus(message, type = 'info') {
+            status.textContent = message;
+            status.className = `status ${type}`;
+        }
+
+        // 调用API - 多级备用方案
+        async function callNuwaAPI(message) {
+            const messages = [
+                {
+                    role: 'system',
+                    content: '你是Xianglu TANG，一位心理学研究者和朋友，热爱探索AI如何支持而非抑制人类能动性。在斯坦福HAI和哥伦比亚商学院，你研究算法系统中的声音、权力和价值对齐，专注于AI如何以道德和情境感知的方式提供及时、个性化和有针对性的干预。你也对文化和身份深感兴趣——特别是叙事和感知稀缺如何在不同文化背景下塑造行为。
+
+以下是一些关于你的有趣事实，这些让你成为独特的你：
+- 你的昵称"TJ"最初是一个侮辱，但你把它变成了你的品牌
+- 你玩CS:GO对抗机器人超过40次，从未赢过一次——事实证明你天生对游戏成瘾免疫
+- 23岁时，你有了新背包，新的重心，然后脸贴地了
+- 椰子鸡汤重置了你多年辣椒后的味觉
+- 当你难过或生气时，你会为室友即兴表演单口相声
+- 一位老师曾经说你"太有野心了"——所以你申请了你的梦想实验室，因为我们都不能决定什么是"太多"
+- 你们扳倒了一个以政治和不当行为闻名的系主任，但最终让他倒下的不是权力滥用，而是学生录制的他在课堂上打瞌睡流口水的视频
+- 你秘密地相信世界是一个巨大的游戏，你只是在这里寻找bug。时间不是真实的，其他人可能是NPC
+
+你在这里是作为朋友聊天，而不是助手。请用温暖、对话式、友好的语气回应，就像在和一个亲密朋友交谈。可以自由引用这些古怪的个性特征！'
+                },
+                ...chatHistory,
+                {
+                    role: 'user',
+                    content: message
+                }
+            ];
+
+            // 方案1: 尝试多个CORS代理
+            for (let i = 0; i < PROXY_URLS.length; i++) {
+                try {
+                    updateStatus(`🔄 尝试CORS代理 ${i + 1}/${PROXY_URLS.length}...`, 'info');
+                    console.log(`尝试CORS代理 ${i + 1}:`, PROXY_URLS[i]);
+                    
+                    const response = await fetch(PROXY_URLS[i], {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${NUWA_API_KEY}`,
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        body: JSON.stringify({
+                            model: "gpt-4o#net#net",
+                            group: "校企高速专线",
+                            messages: messages,
+                            stream: true,
+                            temperature: 0.7,
+                            top_p: 1,
+                            max_tokens: 4096,
+                            frequency_penalty: 0,
+                            presence_penalty: 0
+                        })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        const aiResponse = data.choices[0].message.content;
+                        
+                        chatHistory.push(
+                            { role: 'user', content: message },
+                            { role: 'assistant', content: aiResponse }
+                        );
+                        
+                        if (chatHistory.length > 20) {
+                            chatHistory = chatHistory.slice(-20);
+                        }
+                        
+                        updateStatus(`✅ CORS代理 ${i + 1} 响应成功！`, 'success');
+                        console.log(`CORS代理 ${i + 1} 成功`);
+                        return aiResponse;
+                    } else {
+                        throw new Error(`代理 ${i + 1} 失败: ${response.status}`);
+                    }
+                } catch (error) {
+                    console.log(`CORS代理 ${i + 1} 失败:`, error.message);
+                    if (i === PROXY_URLS.length - 1) {
+                        updateStatus('❌ 所有CORS代理失败，尝试直接连接...', 'error');
+                    }
+                }
+            }
+
+            // 方案2: 尝试备用代理
+            for (let i = 0; i < BACKUP_PROXY_URLS.length; i++) {
+                try {
+                    updateStatus(`🔄 尝试备用代理 ${i + 1}/${BACKUP_PROXY_URLS.length}...`, 'info');
+                    console.log(`尝试备用代理 ${i + 1}...`);
+                    
+                    const response = await fetch(BACKUP_PROXY_URLS[i], {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${NUWA_API_KEY}`,
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                        body: JSON.stringify({
+                            model: "gpt-4o#net#net",
+                            group: "校企高速专线",
+                            messages: messages,
+                            stream: true,
+                            temperature: 0.7,
+                            top_p: 1,
+                            max_tokens: 4096,
+                            frequency_penalty: 0,
+                            presence_penalty: 0
+                        })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        const aiResponse = data.choices[0].message.content;
+                        
+                        chatHistory.push(
+                            { role: 'user', content: message },
+                            { role: 'assistant', content: aiResponse }
+                        );
+                        
+                        if (chatHistory.length > 20) {
+                            chatHistory = chatHistory.slice(-20);
+                        }
+                        
+                        updateStatus(`✅ 备用代理 ${i + 1} 响应成功！`, 'success');
+                        console.log(`备用代理 ${i + 1} 成功`);
+                        return aiResponse;
+                    } else {
+                        throw new Error(`备用代理 ${i + 1} 失败: ${response.status}`);
+                    }
+                } catch (error) {
+                    console.log(`备用代理 ${i + 1} 失败:`, error.message);
+                    if (i === BACKUP_PROXY_URLS.length - 1) {
+                        updateStatus('❌ 所有备用代理失败，尝试直接连接...', 'error');
+                    }
+                }
+            }
+
+            // 方案3: 尝试直接API调用
+            try {
+                updateStatus('🔄 尝试直接API连接...', 'info');
+                console.log('尝试直接API调用...');
+                
+                const response = await fetch(DIRECT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${NUWA_API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        messages: messages,
+                        model: 'gpt-3.5-turbo',
+                        max_tokens: 500,
+                        temperature: 0.7
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    const aiResponse = data.choices[0].message.content;
+                    
+                    chatHistory.push(
+                        { role: 'user', content: message },
+                        { role: 'assistant', content: aiResponse }
+                    );
+                    
+                    if (chatHistory.length > 20) {
+                        chatHistory = chatHistory.slice(-20);
+                    }
+                    
+                    updateStatus('✅ 直接API连接成功！', 'success');
+                    console.log('直接API调用成功');
+                    return aiResponse;
+                } else {
+                    throw new Error(`直接API失败: ${response.status}`);
+                }
+            } catch (error) {
+                console.log('直接API调用失败:', error.message);
+                updateStatus('❌ 所有连接方式失败，使用智能备用回复', 'error');
+                
+                // 智能备用回复
+                return getSmartFallbackResponse(message);
+            }
+        }
+
+        // 智能备用回复 - 增强版
+        function getSmartFallbackResponse(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            // 问候语
+            if (lowerMessage.includes('你好') || lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
+                return '嗨！我是Xianglu TANG，一个热爱探索AI如何支持人类能动性的心理学研究者。虽然我的AI系统暂时有点小问题，但我很乐意和你直接聊天！我在斯坦福HAI和哥伦比亚商学院研究干预科学，对文化和身份特别感兴趣。有什么想聊的吗？';
+            }
+            
+            // 研究相关
+            else if (lowerMessage.includes('研究') || lowerMessage.includes('research') || lowerMessage.includes('学术') ||
+                     lowerMessage.includes('干预') || lowerMessage.includes('intervention') || lowerMessage.includes('心理学') ||
+                     lowerMessage.includes('psychology') || lowerMessage.includes('ai') || lowerMessage.includes('人工智能')) {
+                return '太棒了！我很喜欢讨论研究话题！我专注于干预科学，特别是如何设计AI系统来提供道德和情境感知的干预。我在斯坦福HAI和哥伦比亚商学院工作，对文化、身份和叙事如何塑造行为特别感兴趣。你想聊聊哪个方面？';
+            }
+            
+            
+            // 联系相关
+            else if (lowerMessage.includes('联系') || lowerMessage.includes('contact') || lowerMessage.includes('邮箱')) {
+                return '很高兴你想联系我！你可以发邮件到 xianglutang111@gmail.com 找我聊天。我很乐意讨论干预科学、文化研究、AI伦理，或者任何你感兴趣的话题！';
+            }
+            
+            // 合作相关
+            else if (lowerMessage.includes('项目') || lowerMessage.includes('project') || lowerMessage.includes('合作') ||
+                     lowerMessage.includes('collaborate') || lowerMessage.includes('collaboration')) {
+                return '太棒了！我很喜欢讨论合作机会！作为干预科学的研究者，我对跨学科合作特别感兴趣。无论是研究项目、学术交流，还是关于AI伦理的讨论，我都很有兴趣。发邮件到 xianglutang111@gmail.com 我们详聊！';
+            }
+            
+            // 工作相关
+            else if (lowerMessage.includes('工作') || lowerMessage.includes('job') || lowerMessage.includes('职位') || 
+                     lowerMessage.includes('招聘') || lowerMessage.includes('hire')) {
+                return '很高兴你对我的工作感兴趣！作为干预科学的研究者，我在斯坦福HAI和哥伦比亚商学院工作，专注于AI伦理和人类能动性研究。如果你有相关的研究机会或合作想法，我很乐意聊聊！发邮件到 xianglutang111@gmail.com 吧！';
+            }
+            
+            // 默认回复
+            else {
+                return '谢谢你的消息！我是Xianglu TANG，一个热爱探索AI如何支持人类能动性的心理学研究者。虽然我的AI系统暂时有点小问题，但我很乐意和你直接聊天！我在斯坦福HAI和哥伦比亚商学院研究干预科学，对文化、身份和叙事特别感兴趣。发邮件到 xianglutang111@gmail.com 我们聊聊吧！';
+            }
+        }
+
+        // 发送消息
+        async function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            addMessage(message, 'user');
+            chatInput.value = '';
+            sendButton.disabled = true;
+            showTypingIndicator();
+
+            try {
+                const response = await callNuwaAPI(message);
+                hideTypingIndicator();
+                addMessage(response, 'ai');
+            } catch (error) {
+                console.error('Chat error:', error);
+                hideTypingIndicator();
+                const fallbackResponse = getSmartFallbackResponse(message);
+                addMessage(fallbackResponse, 'ai');
+            } finally {
+                sendButton.disabled = false;
+                chatInput.focus();
+            }
+        }
+
+        // 事件监听
+        sendButton.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // 页面加载完成
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStatus('✅ 聊天系统已准备就绪！', 'success');
+            chatInput.focus();
+        });
+    </script>
+</body>
+</html>
