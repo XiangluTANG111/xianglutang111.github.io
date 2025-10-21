@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Your Own Research Toolkit—My Playbook | Xianglu TANG</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#0f172a',
+                        'dark-card': '#1e293b',
+                        'dark-text': '#e2e8f0',
+                        'accent': '#14b8a6',
+                        'accent-hover': '#0d9488'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 50%, #0f766e 100%);
+        }
+        .content-section {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+        .quote-highlight {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(13, 148, 136, 0.1) 100%);
+            border-left: 4px solid #14b8a6;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="text-dark-text">
+    <!-- Navigation -->
+    <nav class="bg-dark-card/90 backdrop-blur-md border-b border-accent/20 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-2xl font-bold text-accent hover:text-accent-hover transition-colors">
+                        Xianglu TANG
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-accent transition-colors">Home</a>
+                    <a href="blog.html" class="hover:text-accent transition-colors">Blog</a>
+                    <a href="posts.html" class="hover:text-accent transition-colors">Posts</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-accent">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 text-shadow fade-in">
+                Building Your Own Research Toolkit—My Playbook
+            </h1>
+            <p class="text-xl text-white/90 mb-8 fade-in">
+                This post doubles as my research diary <em>and</em> a mini-origin story. Buckle up.
+            </p>
+            <div class="flex items-center justify-center space-x-4 text-white/80 fade-in">
+                <span><i class="fas fa-calendar-alt mr-2"></i>December 15, 2024</span>
+                <span><i class="fas fa-clock mr-2"></i>8 min read</span>
+                <span><i class="fas fa-tag mr-2"></i>Research</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <article class="content-section rounded-2xl p-8 md:p-12 fade-in">
+            <div class="prose prose-lg max-w-none">
+                <h2 class="text-2xl font-semibold text-accent mb-6">Scene-Setting</h2>
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Plenty of folks gripe about "resource deserts": no RA openings, no funding, no projects. Sure—those are real constraints. But they're not the only roads in (the world is huge and, hey, psychology studies <em>people</em>; people are everywhere).
+                </p>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    First, the brutal truth: <strong>whoever owns the data calls the shots.</strong> If you're upset your PI won't back your pet project, ask yourself—did <em>you</em> bring in the grant money? Whoever funds the work is basically the majority shareholder; voting power comes with the checkbook.
+                </p>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    So, how do you run with your own ideas? Two main hacks:
+                </p>
+                
+                <ol class="text-lg text-dark-text/90 leading-relaxed mb-8 pl-6">
+                    <li class="mb-4"><strong>Win your own funding.</strong> (Parking this—I've only co-piloted three grants so far.)</li>
+                    <li class="mb-4"><strong>Use free data.</strong> The internet is drowning in it. Reddit alone is a gold mine of human behavior—you just need a crawler plus some manual coding or NLP magic. Need behavioral or intervention experiments? Partner with someone who already has participants or datasets. No secrets here; it's all communication.</li>
+                </ol>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    My personal three-step mantra:
+                </p>
+                
+                <div class="quote-highlight p-6 rounded-lg my-8">
+                    <p class="text-lg italic text-accent">
+                        <strong>1 — Spot real-world problems</strong><br>
+                        <strong>2 — Reach out, fearlessly</strong><br>
+                        <strong>3 — Lead with passion + a dash of altruism (skip the greed)</strong>
+                    </p>
+                </div>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Let's break that down with my own story.
+                </p>
+
+                <h2 class="text-2xl font-semibold text-accent mb-6">1. Eyes for Problems</h2>
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    My undergrad institution had slim pickings for research, and my advisor's interests didn't match mine. She called me "too ambitious" (ouch). So I decided to test whether the world was really that stormy.
+                </p>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    By junior spring I felt adrift and disillusioned, so I cold-emailed the prof who'd taught my philanthropy class. He linked me to a top Chinese NGO. I started tweaking their psych curricula—but soon learned fundraising had tanked that year.
+                </p>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    The pattern made sense: the NGO had always done <em>B2B</em> (corporate) pitches, but China's economy was cooling, so that stream dried up. Switching to <em>crowdfunding</em> didn't click because the org's "professional" tone felt distant. Meanwhile, story-heavy, tug-at-heart-strings orgs kept raking in donations—even after public scandals.
+                </p>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Cue the research question: <strong>How do narrative styles shape trust and donations, and how has that shifted over the past decade?</strong> Boom—project seed planted.
+                </p>
+
+                <h2 class="text-2xl font-semibold text-accent mb-6">2. Courage to Pitch</h2>
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Good idea in hand, I pitched the fundraising team: low-cost, high-return research that could improve their strategy. To show I wasn't just vibes, I ran a pilot: scraped every article on their WeChat account, did an NLP feature analysis, and modeled engagement. Deliver proof of concept → earn trust.
+                </p>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Lesson: don't wait for a "talent scout." Busy mentors rarely stroll by. Walk up and <em>show</em> the goods.
+                </p>
+
+                <h2 class="text-2xl font-semibold text-accent mb-6">3. Passion & Altruism</h2>
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Academia runs on a streak of idealism—let that sincerity shine. But sincerity must be operational: respect org processes, anticipate red tape, and troubleshoot as you go.
+                </p>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Also, convert findings into something teammates can actually use—say, a narrative template—not just drop a lofty paper and vanish.
+                </p>
+
+                <h2 class="text-2xl font-semibold text-accent mb-6">Parting Words: Keep Your <em>sisu</em></h2>
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Real life = messy, peppered with rejections. I've got my share; they just don't fit into this highlight reel. <strong>Luck isn't constant—most of us simply hang on until our lucky window opens.</strong> In hindsight, you'll reframe the bruises.
+                </p>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    I'm obsessed with the Finnish word <strong><em>sisu</em></strong>: gritty resilience and dogged determination when adversity hits. May you cultivate your own flavor of sisu. Now go turn those ideas—and datasets—into reality.
+                </p>
+                
+                <!-- Sisu Image -->
+                <div class="mt-12 text-center">
+                    <img src="sisu.jpg" alt="Sisu - Finnish resilience" class="mx-auto rounded-2xl shadow-2xl max-w-2xl w-full h-auto object-cover">
+                    <p class="text-dark-text/70 text-sm mt-4 italic">Captured on 10.17 Finland, Helsinki Rock Church</p>
+                </div>
+            </div>
+
+            <!-- Author Info -->
+            <div class="mt-12 pt-8 border-t border-accent/20">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-accent">Xianglu TANG</h4>
+                        <p class="text-dark-text/70">Psychology Researcher | AI & Human Agency Specialist</p>
+                        <p class="text-dark-text/70">Stanford HAI & Columbia Business School</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Navigation -->
+        <div class="flex justify-between items-center mt-12">
+            <a href="blog.html" class="flex items-center space-x-2 text-accent hover:text-accent-hover transition-colors">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Blog</span>
+            </a>
+            <a href="index.html" class="flex items-center space-x-2 text-accent hover:text-accent-hover transition-colors">
+                <span>Home</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-card py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-accent mb-4">Xianglu TANG</h3>
+                    <p class="text-dark-text/70">
+                        Psychology Researcher | AI & Human Agency Specialist<br>
+                        Stanford HAI & Columbia Business School
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-accent mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-dark-text/70 hover:text-accent transition-colors">Home</a></li>
+                        <li><a href="blog.html" class="text-dark-text/70 hover:text-accent transition-colors">Blog</a></li>
+                        <li><a href="posts.html" class="text-dark-text/70 hover:text-accent transition-colors">Posts</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-accent mb-4">Contact</h4>
+                    <p class="text-dark-text/70 mb-2">
+                        <i class="fas fa-envelope mr-2"></i>
+                        xianglutang111@gmail.com
+                    </p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-dark-text/70 hover:text-accent transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-dark-text/70 hover:text-accent transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-accent/20 mt-8 pt-8 text-center">
+                <p class="text-dark-text/70">&copy; 2025 Xianglu TANG. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-accent hover:bg-accent-hover text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Back to top functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        // Add mobile menu functionality if needed
+    </script>
+</body>
+</html>
