@@ -227,16 +227,70 @@
         <!-- Filter Tags -->
         <div class="flex flex-wrap justify-center gap-4 mb-12">
           <button class="filter-btn blog-tag active" data-filter="all">All</button>
-          <button class="filter-btn blog-tag" data-filter="ai">AI Tools</button>
-          <button class="filter-btn blog-tag" data-filter="web">Web Development</button>
+          <button class="filter-btn blog-tag" data-filter="ai">AI Research</button>
           <button class="filter-btn blog-tag" data-filter="research">Research</button>
-          <button class="filter-btn blog-tag" data-filter="life">Life Lessons</button>
+          <button class="filter-btn blog-tag" data-filter="life">Life & Travel</button>
+          <button class="filter-btn blog-tag" data-filter="web">Web Development</button>
           <button class="filter-btn blog-tag" data-filter="medicine">Traditional Medicine</button>
         </div>
 
         <!-- Blog Posts Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="blog-grid">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
           
+          <!-- AI Ecology Psychology Blog -->
+          <article class="blog-card card rounded-xl overflow-hidden" data-category="ai">
+            <div class="relative h-48 overflow-hidden">
+              <div class="w-full h-full bg-gradient-to-br from-green-600 to-green-800 flex items-center justify-center">
+                <i class="fas fa-brain text-6xl text-white opacity-50"></i>
+              </div>
+              <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+              <div class="blog-category">
+                <span class="blog-tag">AI Research</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="mb-4">
+                <span class="text-gray-400 text-sm">December 22, 2024</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 text-teal-300">The Ecological-Psychology Comeback of AI</h3>
+              <p class="text-gray-300 mb-4 line-clamp-3">
+                AI is rediscovering J.J. Gibson's ecological psychology—where perception is action, and the environment teaches us what's possible. From DeepSeek OCR to Meta's affordance maps.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-400">6 min read</span>
+                <a href="ai-ecology-blog.html" class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Finland Travel Blog -->
+          <article class="blog-card card rounded-xl overflow-hidden" data-category="life">
+            <div class="relative h-48 overflow-hidden">
+              <img src="finland1.jpg" alt="Finland Travel Cover" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+              <div class="blog-category">
+                <span class="blog-tag">Travel</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="mb-4">
+                <span class="text-gray-400 text-sm">December 20, 2024</span>
+              </div>
+              <h3 class="text-xl font-semibold mb-3 text-teal-300">Falling Hard for Finland</h3>
+              <p class="text-gray-300 mb-4 line-clamp-3">
+                A journey through Finland's winter wonderland, from Helsinki's design culture to Lapland's northern lights. Discovering sisu, sauna culture, and the Finnish way of life that captured my heart.
+              </p>
+              <div class="flex items-center justify-between">
+                <span class="text-sm text-gray-400">8 min read</span>
+                <a href="finland-blog.html" class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
+                  Read More
+                </a>
+              </div>
+            </div>
+          </article>
+
           <!-- Research Toolkit Project -->
           <article class="blog-card card rounded-xl overflow-hidden" data-category="research">
             <div class="relative h-48 overflow-hidden">
@@ -248,7 +302,7 @@
             </div>
             <div class="p-6">
               <div class="mb-4">
-                <span class="text-gray-400 text-sm">April 5, 2025</span>
+                <span class="text-gray-400 text-sm">December 15, 2024</span>
               </div>
               <h3 class="text-xl font-semibold mb-3 text-teal-300">Building Your Own Research Toolkit—My Playbook</h3>
               <p class="text-gray-300 mb-4 line-clamp-3">
@@ -274,7 +328,7 @@
             </div>
             <div class="p-6">
               <div class="mb-4">
-                <span class="text-gray-400 text-sm">January 15, 2025</span>
+                <span class="text-gray-400 text-sm">Coming Soon</span>
               </div>
               <h3 class="text-xl font-semibold mb-3 text-teal-300">Becoming TJ</h3>
               <p class="text-gray-300 mb-4 line-clamp-3">
@@ -282,8 +336,8 @@
               </p>
               <div class="flex items-center justify-between">
                 <span class="text-sm text-gray-400">12 min read</span>
-                <a href="becoming-tj.html" class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium">
-                  Read More
+                <a href="#" class="read-more-btn text-white px-4 py-2 rounded-lg text-sm font-medium opacity-50 cursor-not-allowed">
+                  Coming Soon
                 </a>
               </div>
             </div>

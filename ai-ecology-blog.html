@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ecological-Psychology Comeback of AI | Xianglu TANG</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#0f172a',
+                        'dark-card': '#1e293b',
+                        'dark-text': '#e2e8f0',
+                        'accent': '#14b8a6',
+                        'accent-hover': '#0d9488'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 50%, #0f766e 100%);
+        }
+        .content-section {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+        .quote-highlight {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(13, 148, 136, 0.1) 100%);
+            border-left: 4px solid #14b8a6;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .signal-card {
+            background: rgba(20, 184, 166, 0.05);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            transition: all 0.3s ease;
+        }
+        .signal-card:hover {
+            background: rgba(20, 184, 166, 0.1);
+            border-color: rgba(20, 184, 166, 0.4);
+            transform: translateY(-2px);
+        }
+        .number-badge {
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+            color: white;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .code-highlight {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body class="text-dark-text">
+    <!-- Navigation -->
+    <nav class="bg-dark-card/90 backdrop-blur-md border-b border-accent/20 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-2xl font-bold text-accent hover:text-accent-hover transition-colors">
+                        Xianglu TANG
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-accent transition-colors">Home</a>
+                    <a href="blog.html" class="hover:text-accent transition-colors">Blog</a>
+                    <a href="posts.html" class="hover:text-accent transition-colors">Posts</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-accent">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 text-shadow fade-in">
+                🚀 The Ecological-Psychology Comeback of AI 🚀
+            </h1>
+            <p class="text-xl text-white/90 mb-8 fade-in">
+                AI is rediscovering J.J. Gibson's ecological psychology—where perception is action, and the environment teaches us what's possible
+            </p>
+            <div class="flex items-center justify-center space-x-4 text-white/80 fade-in">
+                <span><i class="fas fa-calendar-alt mr-2"></i>December 22, 2024</span>
+                <span><i class="fas fa-clock mr-2"></i>6 min read</span>
+                <span><i class="fas fa-tag mr-2"></i>AI Research</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <article class="content-section rounded-2xl p-8 md:p-12 fade-in">
+            <div class="prose prose-lg max-w-none">
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Lately, I've been seeing something fascinating: <strong class="text-accent">AI rediscovering ecological psychology</strong>—yes, straight out of J.J. Gibson's playbook where <em>perception is action</em>.
+                </p>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Over the past few weeks, three signals caught my eye:
+                </p>
+
+                <!-- Signal 1 -->
+                <div class="signal-card rounded-xl p-6 mb-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="number-badge">1️⃣</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-accent mb-3">DeepSeek OCR → "Perception = Compression"</h3>
+                            <p class="text-dark-text/90 mb-4">
+                                <a href="https://lnkd.in/eTPGUkQ9" class="text-accent hover:text-accent-hover underline" target="_blank">DeepSeek OCR</a> doesn't read text line-by-line. Instead, it captures the <em>spatial structure</em> of a page—chunking it into invariants and affordances, just like human vision. The result? <strong class="text-accent">Fewer tokens, richer context.</strong> It's perception as pattern extraction, not text parsing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Signal 2 -->
+                <div class="signal-card rounded-xl p-6 mb-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="number-badge">2️⃣</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-accent mb-3">Meta's Agent Learning via Early Experience</h3>
+                            <p class="text-dark-text/90 mb-4">
+                                <a href="https://lnkd.in/eBQgrCXT" class="text-accent hover:text-accent-hover underline" target="_blank">Meta's new framework</a> teaches agents to explore before they optimize—learning what the world <em>affords</em> before chasing rewards. Through playful trial and error, the agent builds an internal <em>affordance map</em>—a landscape of action possibilities. That's pure Gibson.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Signal 3 -->
+                <div class="signal-card rounded-xl p-6 mb-8">
+                    <div class="flex items-start space-x-4">
+                        <div class="number-badge">3️⃣</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-accent mb-3">Fei-Fei Li's Pixel-Level World Models</h3>
+                            <p class="text-dark-text/90 mb-4">
+                                Fei-Fei Li has been championing a return to raw sensory grounding—<strong class="text-accent">no symbolic shortcuts</strong>, no textual abstractions. Evolution shaped intelligence through <em>physical</em> engagement with the world, not pre-labeled categories. Her vision? Models that start from pixels, not words. <em>Ecological vibes all the way.</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-accent mb-6 mt-12">Why It Matters</h2>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    In classical AI, perception was a pre-processing step—something you did <em>before</em> cognition. But ecological psychology flips that:
+                </p>
+
+                <div class="quote-highlight p-6 rounded-lg my-8">
+                    <p class="text-lg italic text-accent font-semibold">
+                        Perception isn't a prelude. It <em>is</em> the representation.
+                    </p>
+                </div>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    As our models anchor themselves in richer sensory data—beyond text, beyond language—they'll begin to perceive affordances we can't yet imagine. The next frontier of AI might not be "bigger language models," but <strong class="text-accent">smarter perceptual systems</strong> that learn directly from the environment and compress the <em>right</em> invariants.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Maybe Gibson wasn't just a psychologist out of time. Maybe he was holding the <em>cheat sheet</em> we've been missing.
+                </p>
+
+                <!-- Technical Deep Dive -->
+                <div class="bg-dark-card/50 rounded-xl p-6 mt-8">
+                    <h3 class="text-xl font-bold text-accent mb-4">🔬 Technical Deep Dive</h3>
+                    <div class="code-highlight">
+                        <p class="text-dark-text/80 mb-2"><strong>Key Concepts:</strong></p>
+                        <ul class="text-dark-text/80 space-y-1 ml-4">
+                            <li>• <strong>Affordances:</strong> What the environment offers for action</li>
+                            <li>• <strong>Invariants:</strong> Stable patterns in the sensory array</li>
+                            <li>• <strong>Direct Perception:</strong> No mental representations needed</li>
+                            <li>• <strong>Embodied Cognition:</strong> Mind and body as one system</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Author Info -->
+            <div class="mt-12 pt-8 border-t border-accent/20">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-accent">Xianglu TANG</h4>
+                        <p class="text-dark-text/70">Psychology Researcher | AI & Human Agency Specialist</p>
+                        <p class="text-dark-text/70">Stanford HAI & Columbia Business School</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Navigation -->
+        <div class="flex justify-between items-center mt-12">
+            <a href="index.html" class="flex items-center space-x-2 text-accent hover:text-accent-hover transition-colors">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+            <a href="finland-blog.html" class="flex items-center space-x-2 text-accent hover:text-accent-hover transition-colors">
+                <span>Falling Hard for Finland</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-card py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-accent mb-4">Xianglu TANG</h3>
+                    <p class="text-dark-text/70">
+                        Psychology Researcher | AI & Human Agency Specialist<br>
+                        Stanford HAI & Columbia Business School
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-accent mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-dark-text/70 hover:text-accent transition-colors">Home</a></li>
+                        <li><a href="blog.html" class="text-dark-text/70 hover:text-accent transition-colors">Blog</a></li>
+                        <li><a href="posts.html" class="text-dark-text/70 hover:text-accent transition-colors">Posts</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-accent mb-4">Contact</h4>
+                    <p class="text-dark-text/70 mb-2">
+                        <i class="fas fa-envelope mr-2"></i>
+                        xianglutang111@gmail.com
+                    </p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-dark-text/70 hover:text-accent transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-dark-text/70 hover:text-accent transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-accent/20 mt-8 pt-8 text-center">
+                <p class="text-dark-text/70">&copy; 2025 Xianglu TANG. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-accent hover:bg-accent-hover text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Back to top functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        // Add mobile menu functionality if needed
+    </script>
+</body>
+</html>
