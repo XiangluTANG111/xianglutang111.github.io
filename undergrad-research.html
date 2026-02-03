@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If I Restarted Undergrad - Xianglu TANG</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#0f172a',
+                        'dark-card': '#1e293b',
+                        'dark-text': '#e2e8f0',
+                        'accent': '#14b8a6',
+                        'accent-hover': '#0d9488'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #14b8a6 0%, #0d9488 50%, #0f766e 100%);
+        }
+        .content-section {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+        .quote-highlight {
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(13, 148, 136, 0.1) 100%);
+            border-left: 4px solid #14b8a6;
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .chapter-card {
+            background: rgba(20, 184, 166, 0.05);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            transition: all 0.3s ease;
+        }
+        .chapter-card:hover {
+            background: rgba(20, 184, 166, 0.1);
+            border-color: rgba(20, 184, 166, 0.4);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="text-dark-text">
+    <!-- Navigation -->
+    <nav class="bg-dark-card/90 backdrop-blur-md border-b border-accent/20 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-2xl font-bold text-accent hover:text-accent-hover transition-colors">
+                        Xianglu TANG
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-accent transition-colors">Home</a>
+                    <a href="blog.html" class="hover:text-accent transition-colors">Blog</a>
+                    <a href="posts.html" class="hover:text-accent transition-colors">Posts</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-accent">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-8 fade-in">
+                <img src="Research root.png" alt="Research Root" class="mx-auto rounded-xl shadow-2xl max-w-full h-auto" style="max-height: 300px;">
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 text-shadow fade-in">
+                If I Restarted Undergrad
+            </h1>
+            <p class="text-xl text-white/90 mb-8 fade-in">
+                How I'd Go From "No Research" to "Real Research"
+            </p>
+            <div class="flex items-center justify-center space-x-4 text-white/80 fade-in">
+                <span><i class="fas fa-calendar-alt mr-2"></i>February 3, 2026</span>
+                <span><i class="fas fa-clock mr-2"></i>15 min read</span>
+                <span><i class="fas fa-tag mr-2"></i>Research</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <article class="content-section rounded-2xl p-8 md:p-12 fade-in">
+            <div class="prose prose-lg max-w-none">
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    <strong class="text-accent">[Cold open | camera on | slight smile]</strong><br><br>
+                    Okay. Imagine this: my undergrad life <strong>restarts</strong>. Like… I respawn as a freshman again. Same brain, same hunger, but <strong>zero research opportunities</strong>, zero "connections," zero insider information. Just me, a campus, and that feeling of "I want to do real research, but how do people even get in?"
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    This vlog is basically my cheat-code. Not the fake kind. The real kind. The kind that costs time, effort, and a slightly unhinged level of seriousness.
+                </p>
+
+                <div class="quote-highlight p-6 rounded-lg my-8">
+                    <p class="text-lg italic text-accent text-center">
+                        "Long-termism."
+                    </p>
+                    <p class="text-dark-text/80 mt-4">
+                        Not "work hard for two weeks."<br>
+                        I mean: build a life where every step quietly stacks into the next one.
+                    </p>
+                </div>
+
+                <hr class="border-accent/30 my-12">
+
+                <h2 class="text-3xl font-bold text-white mb-8">Chapter 1: If Two Things Can Be Done Together, Do Them Together</h2>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    When you're young—like <em>really</em> young in your career—time is your biggest advantage. But only if you use it like a strategist.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    So here's my first rule:
+                </p>
+
+                <div class="chapter-card p-6 rounded-lg mb-8">
+                    <p class="text-xl text-accent font-semibold text-center">
+                        "If you find a few things can be done together, you do them together."
+                    </p>
+                </div>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    Example: you have a course assignment. Most people treat it as "get it done."
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    If I restart? I treat it as: <strong>this could be a literature review.</strong>
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    So I would take that course paper and <strong>develop it into a real literature review</strong>, with depth. And I would <em>not</em> be trapped by the course rubric, because the rubric treats you like a student.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    But if you want to become a scholar, then:
+                </p>
+
+                <p class="text-xl text-accent font-semibold mb-8 text-center">
+                    "Please become a scholar now."
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Do the assignment like it's going to be published. Not because it <em>will</em> be published, but because you're training your standards.
+                </p>
+
+                <hr class="border-accent/30 my-12">
+
+                <h2 class="text-3xl font-bold text-white mb-8">Chapter 2: "Learn by Dirty Hands"</h2>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    Here's another rule I'd keep:
+                </p>
+
+                <div class="chapter-card p-6 rounded-lg mb-8">
+                    <p class="text-xl text-accent font-semibold text-center">
+                        "Learn by dirty hands. Do groundwork."
+                    </p>
+                </div>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    Meaning: in every assignment, every project, every task—know exactly what you're doing. Don't outsource your thinking.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    Not to your teammate.<br>
+                    Not to your future RA.<br>
+                    Not to AI.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6 text-gray-400">
+                    (And yes I use AI a lot—if you want that workflow, go check my other post. But I'm serious: AI can help, but it can't replace your internal pathway.)
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Because the thing people don't tell you is: <strong>Aha moments need time.</strong> Humans are amazing because we pause, we breathe, we get stuck, then our brain slowly gets shaped.
+                </p>
+
+                <div class="quote-highlight p-6 rounded-lg my-8">
+                    <p class="text-lg italic text-accent">
+                        "That confidence becomes your internal engine."
+                    </p>
+                    <p class="text-dark-text/80 mt-2">
+                        I can figure it out. I didn't know before, and I learned it. I can learn the next thing too.
+                    </p>
+                </div>
+
+                <hr class="border-accent/30 my-12">
+
+                <h2 class="text-3xl font-bold text-white mb-8">Chapter 3: Make Your Coursework Turn Into Research Experience</h2>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    This part is the biggest hack that doesn't feel like a hack.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    Sometimes "doing research" and "doing undergrad coursework" can literally be the same thing.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    Let me give you a real example from my life:
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    In undergrad I took a class called <strong>psychological assessment</strong>. The assignment was to develop or translate a scale. Most people did the minimum.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    Me? I did it step by step, seriously. Like I was building something real. I thought through each procedure carefully. I tried to make it "publication-ready."
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    And because I did the steps properly, later it actually became a real outcome: I collaborated with the professor, we developed it further, and we submitted it as a poster.
+                </p>
+
+                <div class="quote-highlight p-6 rounded-lg my-8">
+                    <p class="text-lg italic text-accent">
+                        "Professors don't trust a student to do research just because the student says 'I'm interested.'"
+                    </p>
+                    <p class="text-dark-text/80 mt-2">
+                        They trust you when your work shows: you're serious, you can execute, you already solved 80% of the problems, and the professor only needs to solve the last 20%.
+                    </p>
+                </div>
+
+                <hr class="border-accent/30 my-12">
+
+                <h2 class="text-3xl font-bold text-white mb-8">Chapter 4: "Just Do It" Is Not Brain-Dead</h2>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    I always say: <strong>just do it</strong>.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    It sounds simple, but it's not mindless.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    It means: treat each thing like it matters. Like it's the last thing you'll do. Like it deserves your full attention.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    And over time, something crazy happens:<br>
+                    All the pain you went through—learning each tool, figuring out each step, doing each boring part—starts paying you back.
+                </p>
+
+                <hr class="border-accent/30 my-12">
+
+                <h2 class="text-3xl font-bold text-white mb-8">Chapter 5: Build Relationships Like a Human</h2>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    Now the second big line of long-termism:
+                </p>
+
+                <div class="chapter-card p-6 rounded-lg mb-8">
+                    <p class="text-xl text-accent font-semibold text-center">
+                        "Build your own team. Build good relationships."
+                    </p>
+                </div>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    Here's the truth: when you're a student, you're a nobody. People won't immediately trust you with "real research."
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    So how do you get trust?
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    You walk into their world first. You help. You support what they need. You start from the other person's perspective.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    That's not manipulation. That's honestly just… <strong>altruism.</strong> And I still believe research and helping others can be one thing.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    In my junior year, I was a TA for a professor. I told them:<br>
+                    "I want to go do real field work with an NGO. I can volunteer. I can help with anything."
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    At first, nobody is going to give you an experiment. Of course. So I started with what is realistic: <strong>archived data</strong>. I did it well. I delivered. I made myself useful.
+                </p>
+
+                <div class="quote-highlight p-6 rounded-lg my-8">
+                    <p class="text-lg italic text-accent">
+                        "People invest in you after they trust you."
+                    </p>
+                    <p class="text-dark-text/80 mt-2">
+                        And trust is built through time, care, and real contribution.
+                    </p>
+                </div>
+
+                <hr class="border-accent/30 my-12">
+
+                <h2 class="text-3xl font-bold text-white mb-8">Chapter 6: Build Your Own Team</h2>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    Another thing I did, especially later:
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    I started building my own team.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    At first in undergrad, I was often "a team member." I learned work ethic and workflow from strong teams. Then later—especially in my gap year—I started becoming a project leader.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    And honestly, I built this habit early:
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    When I had group work, I chose people who were good to work with. People who could learn together, give each other feedback, and grow.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    I never treated teammates as competitors.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    If I knew something, I would teach it. I would share tricks, software tips, search strategies—because: <strong>People power is real.</strong>
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    I did this with my senior thesis partner too. They didn't have early research training, so I patiently walked through tools and techniques. And when you do that, something happens socially: People feel you're loyal. They feel you're "real." They want to collaborate deeply.
+                </p>
+
+                <hr class="border-accent/30 my-12">
+
+                <h2 class="text-3xl font-bold text-white mb-8">Final Chapter: The Whole Story Is… Long-Termism</h2>
+                
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    So if I restart undergrad, my life strategy is not "find a magic opportunity."
+                </p>
+
+                <div class="chapter-card p-6 rounded-lg mb-8">
+                    <p class="text-xl text-accent font-semibold text-center">
+                        Become the kind of person opportunities naturally stick to.
+                    </p>
+                </div>
+
+                <ul class="text-lg text-dark-text/90 leading-relaxed mb-8 space-y-4 list-none pl-0">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-accent mt-1 mr-3"></i>
+                        <span>Do your coursework like a scholar.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-accent mt-1 mr-3"></i>
+                        <span>Get your hands dirty.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-accent mt-1 mr-3"></i>
+                        <span>Stack tasks so one thing becomes three things.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-accent mt-1 mr-3"></i>
+                        <span>Build trust by helping first.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-accent mt-1 mr-3"></i>
+                        <span>Build your own team and share what you know.</span>
+                    </li>
+                </ul>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    And yes—gratitude matters.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-6">
+                    I'm genuinely thankful for the mentors who trained me, especially <strong>Dr. Lucy Liu</strong> and <strong>Dr. Alice</strong>, and for the RAs and teammates I worked with, including people like <strong>Becca</strong> who taught me so much early on.
+                </p>
+
+                <div class="quote-highlight p-6 rounded-lg my-8">
+                    <p class="text-lg italic text-accent">
+                        "In the end, research is not just skill. It's lineage. It's people. It's being shaped—and then choosing to shape others."
+                    </p>
+                </div>
+
+                <p class="text-xl text-accent font-semibold text-center mb-8">
+                    That's how you go from "no research opportunities" to "research opportunities."
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8">
+                    Not overnight. But for real.
+                </p>
+
+                <p class="text-lg text-dark-text/90 leading-relaxed mb-8 text-center text-gray-400">
+                    <strong>[Outro | camera closer | soft smile]</strong>
+                </p>
+
+                <div class="quote-highlight p-6 rounded-lg my-8">
+                    <p class="text-lg italic text-accent text-center">
+                        "If you're a student watching this and you feel behind—please don't panic. Just start stacking. Start building. Start doing it seriously."
+                    </p>
+                    <p class="text-dark-text/80 mt-4 text-center">
+                        Long-termism always looks slow… until one day it looks inevitable.
+                    </p>
+                </div>
+
+                <!-- Author Info -->
+                <div class="mt-12 pt-8 border-t border-accent/20">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 bg-accent rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-accent">Xianglu TANG</h4>
+                            <p class="text-dark-text/70">Psychology Researcher | AI & Human Agency Specialist</p>
+                            <p class="text-dark-text/70">Stanford HAI & Columbia Business School</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Navigation -->
+        <div class="flex justify-between items-center mt-12">
+            <a href="blog.html" class="flex items-center space-x-2 text-accent hover:text-accent-hover transition-colors">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Blog</span>
+            </a>
+            <a href="ai-workflow-blog.html" class="flex items-center space-x-2 text-accent hover:text-accent-hover transition-colors">
+                <span>AI Workflow</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-card py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-accent mb-4">Xianglu TANG</h3>
+                    <p class="text-dark-text/70">
+                        Psychology Researcher | AI & Human Agency Specialist<br>
+                        Stanford HAI & Columbia Business School
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-accent mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-dark-text/70 hover:text-accent transition-colors">Home</a></li>
+                        <li><a href="blog.html" class="text-dark-text/70 hover:text-accent transition-colors">Blog</a></li>
+                        <li><a href="posts.html" class="text-dark-text/70 hover:text-accent transition-colors">Posts</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-accent mb-4">Contact</h4>
+                    <p class="text-dark-text/70 mb-2">
+                        <i class="fas fa-envelope mr-2"></i>
+                        xianglutang111@gmail.com
+                    </p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://www.linkedin.com/in/xianglu-tang-69070530b/" target="_blank" class="text-dark-text/70 hover:text-accent transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://x.com/Xianglu_TANG" target="_blank" class="text-dark-text/70 hover:text-accent transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-accent/20 mt-8 pt-8 text-center">
+                <p class="text-dark-text/70">&copy; 2025 Xianglu TANG. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-accent hover:bg-accent-hover text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Back to top functionality
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        // Add mobile menu functionality if needed
+    </script>
+</body>
+</html>
